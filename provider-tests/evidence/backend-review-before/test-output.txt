@@ -1,0 +1,54 @@
+test_choice_change_before_preview_snapshot_never_mislabels_reference (test_backend_review.BackendReviewTests.test_choice_change_before_preview_snapshot_never_mislabels_reference) ... FAIL
+test_duplicate_pending_start_does_not_create_two_billable_tasks (test_backend_review.BackendReviewTests.test_duplicate_pending_start_does_not_create_two_billable_tasks) ... FAIL
+test_existing_success_becomes_unservable_after_choice_changes (test_backend_review.BackendReviewTests.test_existing_success_becomes_unservable_after_choice_changes) ... ok
+test_failed_provider_result_never_displays_synthetic_fixture (test_backend_review.BackendReviewTests.test_failed_provider_result_never_displays_synthetic_fixture) ... ok
+test_key_cleared_during_create_invalidates_old_provider_operation (test_backend_review.BackendReviewTests.test_key_cleared_during_create_invalidates_old_provider_operation) ... FAIL
+test_key_switched_during_poll_never_commits_old_inflight_result (test_backend_review.BackendReviewTests.test_key_switched_during_poll_never_commits_old_inflight_result) ... FAIL
+test_memory_key_not_echoed_or_persisted_in_database (test_backend_review.BackendReviewTests.test_memory_key_not_echoed_or_persisted_in_database) ... ok
+test_revocation_removes_current_source_and_output_access (test_backend_review.BackendReviewTests.test_revocation_removes_current_source_and_output_access) ... ok
+test_source_change_before_preview_snapshot_never_mislabels_source (test_backend_review.BackendReviewTests.test_source_change_before_preview_snapshot_never_mislabels_source) ... FAIL
+
+======================================================================
+FAIL: test_choice_change_before_preview_snapshot_never_mislabels_reference (test_backend_review.BackendReviewTests.test_choice_change_before_preview_snapshot_never_mislabels_reference)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/matt/hackathon/closetrelay/provider-tests/test_backend_review.py", line 85, in test_choice_change_before_preview_snapshot_never_mislabels_reference
+    self.assertEqual(reference.data, self.reference_b_bytes,
+AssertionError: b'\x8[98 chars]0\x05`IDATx\x9c\xed\xd51\r\x000\x0c\xc0\xb0\xb[4323 chars]\x82' != b'\x8[98 chars]0\x05_IDATx\x9c\xed\xd5\xa1\r\x000\x0c\xc0\xb0[4334 chars]\x82' : Binding B was paired with previously read image A
+
+======================================================================
+FAIL: test_duplicate_pending_start_does_not_create_two_billable_tasks (test_backend_review.BackendReviewTests.test_duplicate_pending_start_does_not_create_two_billable_tasks)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/matt/hackathon/closetrelay/provider-tests/test_backend_review.py", line 111, in test_duplicate_pending_start_does_not_create_two_billable_tasks
+    self.assertEqual(len(self.provider.calls), 1, "Repeated identical start created a second provider task")
+AssertionError: 2 != 1 : Repeated identical start created a second provider task
+
+======================================================================
+FAIL: test_key_cleared_during_create_invalidates_old_provider_operation (test_backend_review.BackendReviewTests.test_key_cleared_during_create_invalidates_old_provider_operation)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/matt/hackathon/closetrelay/provider-tests/test_backend_review.py", line 123, in test_key_cleared_during_create_invalidates_old_provider_operation
+    self.assertNotEqual(result["status"], "pending", "Old-key task remained pending after the key was cleared")
+AssertionError: 'pending' == 'pending' : Old-key task remained pending after the key was cleared
+
+======================================================================
+FAIL: test_key_switched_during_poll_never_commits_old_inflight_result (test_backend_review.BackendReviewTests.test_key_switched_during_poll_never_commits_old_inflight_result)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/matt/hackathon/closetrelay/provider-tests/test_backend_review.py", line 132, in test_key_switched_during_poll_never_commits_old_inflight_result
+    self.assertFalse(result["displayable"], "Old-key in-flight image was committed after key replacement")
+AssertionError: True is not false : Old-key in-flight image was committed after key replacement
+
+======================================================================
+FAIL: test_source_change_before_preview_snapshot_never_mislabels_source (test_backend_review.BackendReviewTests.test_source_change_before_preview_snapshot_never_mislabels_source)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/matt/hackathon/closetrelay/provider-tests/test_backend_review.py", line 102, in test_source_change_before_preview_snapshot_never_mislabels_source
+    self.assertEqual(source.data, alternate_bytes,
+AssertionError: b'\x89PNG\r\n\x1a\n\x00\x00\x00\rIHDR\x00\[4421 chars]\x82' != b"\x89PNG\r\n\x1a\n\x00\x00\x00\rIHDR\x00\[4421 chars]\x82" : New consent/source revision was paired with old source bytes
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.208s
+
+FAILED (failures=5)

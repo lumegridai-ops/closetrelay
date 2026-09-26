@@ -1,0 +1,20 @@
+{
+  "observed_at": "2026-09-26T20:33:27.026049+00:00",
+  "performed_via": "actual browser file chooser and Save control",
+  "item": {
+    "id": "SYNTH-NAVY-01",
+    "label": "Synthetic test navy blazer",
+    "photo_ref": "/media/9031c574-5217-49c4-8888-15dadf88c8d9",
+    "location": "Test assets \u2014 no physical stock",
+    "condition": "AI-generated catalog test input. No real garment, donation, or client is represented.",
+    "version": 2,
+    "state": "available",
+    "owner": null,
+    "is_demo": false
+  },
+  "image_sha256": "792ce5cd0be8a029b92d2db4adcb1ead78aa77557bde88a08384ae3ced905a62",
+  "bytes": 2165670,
+  "provider_configured": false,
+  "live_provider_calls": 0,
+  "image_source": "explicitly synthetic image-generation input; not YouCam output"
+}

@@ -1,0 +1,25 @@
+{
+  "created_utc_date": "2026-09-26",
+  "assets": [
+    {
+      "file": "synthetic-adult.png",
+      "sha256": "3755f0ee4729280203772be8c93c98ffd3230e54df9db7699485a03067fb7f85",
+      "bytes": 1891454,
+      "width": 1024,
+      "height": 1536,
+      "source": "Codex built-in image-generation tool",
+      "fictional": true,
+      "youcam_output": false
+    },
+    {
+      "file": "synthetic-navy-blazer.png",
+      "sha256": "792ce5cd0be8a029b92d2db4adcb1ead78aa77557bde88a08384ae3ced905a62",
+      "bytes": 2165670,
+      "width": 1024,
+      "height": 1536,
+      "source": "Codex built-in image-generation tool",
+      "fictional": true,
+      "youcam_output": false
+    }
+  ]
+}

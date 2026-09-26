@@ -1,0 +1,9 @@
+{
+  "observed_at": "2026-09-26T20:40:53.857241+00:00",
+  "same_database_after_process_restart": true,
+  "packed_item_id": "DEMO-JKT-01",
+  "handoffs": 1,
+  "uploaded_image_persisted_and_hash_matched": true,
+  "provider_configured": false,
+  "server_sha256": "03d73117867d6c5c05f85d8923f39bdcd4a74fb7eaa84e155791ad99786ab1b1"
+}

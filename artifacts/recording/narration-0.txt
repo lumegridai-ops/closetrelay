@@ -1,0 +1,1 @@
+Closet Relay connects one clothing choice to the exact item held and packed. This is the working local application, recorded with fictional appointments and synthetic narration. One operator controls this prototype; separate client and staff logins are not implemented.

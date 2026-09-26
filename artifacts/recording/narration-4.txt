@@ -1,0 +1,1 @@
+The optional You Cam preview is disabled because no API key is connected. The real adapter is implemented and tested offline, but live inference is unverified. No generated picture is substituted for a provider result. The non-photo workflow remains complete.

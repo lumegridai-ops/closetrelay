@@ -1,0 +1,1 @@
+"{\n  \"http_status\": 409,\n  \"error\": {\n    \"code\": \"state_conflict\",\n    \"message\": \"Item is held or unavailable; no hold was created for this appointment\"\n  }\n}"

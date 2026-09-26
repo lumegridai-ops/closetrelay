@@ -1,0 +1,17 @@
+__pycache__/
+*.py[cod]
+.DS_Store
+.env
+.env.*
+!.env.example
+backend/data/
+*.sqlite3
+*.sqlite3-*
+*.db
+*.db-*
+.devpost-hackathon-state.json
+artifacts/private/
+node_modules/
+artifacts/recording/*.aiff
+artifacts/recording/*.wav
+artifacts/recording/*.webm

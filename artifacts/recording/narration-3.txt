@@ -1,0 +1,1 @@
+Reloading keeps the handoff. The second appointment sees the packed item as unavailable for a new approval. The original choice and exact physical item are intended to remain connected across the workflow.

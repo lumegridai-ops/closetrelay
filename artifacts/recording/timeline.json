@@ -1,0 +1,44 @@
+[
+  {
+    "index": 0,
+    "start": 0,
+    "end": 16.188,
+    "text": "Closet Relay connects one clothing choice to the exact item held and packed. This is the working local application, recorded with fictional appointments and synthetic narration. One operator controls this prototype; separate client and staff logins are not implemented.",
+    "audio_seconds": 15.487846
+  },
+  {
+    "index": 1,
+    "start": 16.188,
+    "end": 28.602,
+    "text": "The operator records a specific item choice, then creates an exclusive hold. Looking at a garment alone never reserves it. The saved record keeps the item identity and version connected to this appointment.",
+    "audio_seconds": 11.712834
+  },
+  {
+    "index": 2,
+    "start": 28.602,
+    "end": 43.082,
+    "text": "At packing, I deliberately enter the wrong jacket number. The server refuses it and preserves the existing hold. Entering the correct number records one packing handoff. This is a recorded packing action, not proof of shipping or delivery.",
+    "audio_seconds": 13.777687
+  },
+  {
+    "index": 3,
+    "start": 43.082,
+    "end": 54.995,
+    "text": "Reloading keeps the handoff. The second appointment sees the packed item as unavailable for a new approval. The original choice and exact physical item are intended to remain connected across the workflow.",
+    "audio_seconds": 11.21093
+  },
+  {
+    "index": 4,
+    "start": 54.995,
+    "end": 71.415,
+    "text": "The optional You Cam preview is disabled because no API key is connected. The real adapter is implemented and tested offline, but live inference is unverified. No generated picture is substituted for a provider result. The non-photo workflow remains complete.",
+    "audio_seconds": 15.718957
+  },
+  {
+    "index": 5,
+    "start": 71.415,
+    "end": 88.881,
+    "text": "This prototype has no customer study or proven advantage over existing styling and inventory tools. Its next gates are real provider validation, authenticated remote access, and a fair workflow comparison. Source, failure cases and test evidence are available for review.",
+    "audio_seconds": 16.765215
+  }
+]

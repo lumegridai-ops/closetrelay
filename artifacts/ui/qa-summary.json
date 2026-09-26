@@ -1,0 +1,34 @@
+{
+  "recorded_at": "2026-09-26T20:38:23.506151+00:00",
+  "tool": "agent-browser 0.38.1",
+  "tested_server": "http://127.0.0.1:4324",
+  "database": "/tmp/closetrelay-ui-qa-20260926.sqlite3",
+  "scope": "Actual browser core workflow on fictional records; no live YouCam calls",
+  "status": "core browser workflow checks passed",
+  "desktop_viewport": [
+    1440,
+    1100
+  ],
+  "mobile_viewport": [
+    390,
+    844
+  ],
+  "expected_refusals": [
+    "HTTP 409 for competing hold",
+    "HTTP 409 for wrong scanned item"
+  ],
+  "accessibility": {
+    "initial_violation_types": 1,
+    "initial_affected_nodes": 17,
+    "desktop_final_violations": 0,
+    "mobile_final_violations": 0,
+    "incomplete_contrast_category_remains": true
+  },
+  "javascript_page_errors_observed": 0,
+  "provider_live_run": false,
+  "source_sha256": {
+    "ui/index.html": "0444d65f1683d51b2b33b5c03fe123140d53acd368df1e495a5422ece881acb7",
+    "ui/styles.css": "5c9f48a298b2bf7cff379b28a517bf40ae1745105ee37db0b32490d9f2211621",
+    "ui/app.js": "479e6ff14e197d93dc0a1ccc405914c4a1b672f2ad7755c1cc45ebb8f3132b78"
+  }
+}

@@ -1,0 +1,1 @@
+This prototype has no customer study or proven advantage over existing styling and inventory tools. Its next gates are real provider validation, authenticated remote access, and a fair workflow comparison. Source, failure cases and test evidence are available for review.

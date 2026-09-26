@@ -1,0 +1,1 @@
+At packing, I deliberately enter the wrong jacket number. The server refuses it and preserves the existing hold. Entering the correct number records one packing handoff. This is a recorded packing action, not proof of shipping or delivery.

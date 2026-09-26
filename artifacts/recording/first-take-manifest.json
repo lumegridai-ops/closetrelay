@@ -1,0 +1,28 @@
+{
+  "created_at": "2026-09-26T20:33:27.276Z",
+  "file": "closetrelay-local-prototype.mp4",
+  "sha256": "df53656b036929d83efbe72021120b572d1a1a19cce5241902d7bf9f43ec58e7",
+  "media": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "h264",
+        "width": 1440,
+        "height": 1080
+      },
+      {
+        "codec_name": "aac"
+      }
+    ],
+    "format": {
+      "duration": "88.181000",
+      "size": "5281287"
+    }
+  },
+  "actual_browser_recording": true,
+  "fictional_records": true,
+  "synthetic_narration": true,
+  "live_youcam": false,
+  "submitted": false
+}

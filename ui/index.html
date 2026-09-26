@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#254c3e">
+  <title>ClosetRelay · The right item, all the way through</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%23254c3e'/%3E%3Cpath d='M26 23a6 6 0 1 1 6 6v6L14 45h36L32 35' fill='none' stroke='%23f8f4e9' stroke-width='4' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to appointment</a>
+  <div class="shell">
+    <aside class="sidebar" aria-label="Workspace navigation">
+      <a class="brand" href="/" aria-label="ClosetRelay home">
+        <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 40 40"><path d="M16 13a4 4 0 1 1 4 4v5L7 30h26L20 22"/></svg></span>
+        <span>Closet<span class="brand-light">Relay</span><small>A thoughtful handoff.</small></span>
+      </a>
+      <div class="workspace-label"><span class="online-dot"></span> Local operator workspace</div>
+      <div class="nav-title"><span>APPOINTMENTS</span><button id="add-appointment" class="icon-button" aria-label="Add appointment" title="Add appointment">+</button></div>
+      <nav id="appointments" aria-label="Appointments"><p class="muted">Loading appointments…</p></nav>
+      <div class="sidebar-note">
+        <span class="eyebrow">THE HANDOFF PROMISE</span>
+        <p>A client's choice stays connected to one exact item.</p>
+        <div class="note-rule"></div>
+        <small>One operator workspace.<br>No separate client or staff logins.</small>
+      </div>
+      <a class="sidebar-bottom" href="#activity">View the activity record <span aria-hidden="true">↗</span></a>
+    </aside>
+
+    <div class="workspace">
+      <header class="topbar">
+        <div><span class="eyebrow">APPOINTMENT WORKSPACE</span><span class="topbar-sub">Choice → hold → handoff</span></div>
+        <button id="refresh" class="button button-quiet"><span aria-hidden="true">↻</span> Refresh</button>
+      </header>
+      <main id="main" tabindex="-1">
+        <div id="sample-banner" class="sample-banner" hidden><span class="sample-icon" aria-hidden="true">i</span><p><strong>Practice with fictional records.</strong> Sample appointments and garments are invented. Drawings and sample test images are not real inventory.</p></div>
+        <div id="message" class="message" hidden tabindex="-1"></div>
+        <div id="loading" class="loading"><span class="loading-ring" aria-hidden="true"></span><p>Opening your workspace…</p></div>
+        <div id="app" hidden>
+          <section class="page-heading">
+            <div><div class="eyebrow" id="appointment-kicker">CURRENT APPOINTMENT</div><h1 id="appointment-name">A choice worth keeping.</h1><p id="appointment-subtitle">Find an item, record the client's choice, and carry it through.</p></div>
+            <span id="appointment-status" class="status"></span>
+          </section>
+
+          <section class="journey" aria-label="Appointment progress"><ol id="progress"></ol><div class="journey-note"><span aria-hidden="true">↳</span><span>One item.<br><strong>No silent substitutions.</strong></span></div></section>
+
+          <div class="work-grid">
+            <section class="rack-section" aria-labelledby="rack-heading">
+              <div class="section-heading"><div><span class="eyebrow">THE APPOINTMENT RACK</span><h2 id="rack-heading">Start with the actual item.</h2></div><button id="add-item" class="button button-quiet">+ Add item</button></div>
+              <p class="section-intro">Check the condition and location before recording a choice.</p>
+              <div class="rack-toolbar"><div class="filter-group" role="group" aria-label="Filter items"><button class="filter active" data-filter="all" aria-pressed="true">All items</button><button class="filter" data-filter="available" aria-pressed="false">Available</button><button class="filter" data-filter="held" aria-pressed="false">On hold</button></div><span id="rack-count" class="muted"></span></div>
+              <div id="items" class="item-grid"></div>
+              <div class="rack-footnote"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M7 9V6a5 5 0 0 1 10 0v3M5 9h14v12H5z"/></svg><p>Looking at an item doesn't reserve it.<br><strong>A hold is created only after an approval.</strong></p></div>
+            </section>
+
+            <aside id="choice-panel" class="choice-panel" aria-labelledby="choice-heading"></aside>
+          </div>
+
+          <section id="activity" class="activity-section" aria-labelledby="activity-heading">
+            <div class="section-heading"><div><span class="eyebrow">THE PAPER TRAIL</span><h2 id="activity-heading">Every change has a reason.</h2></div><button id="manifest" class="button button-quiet">View packing record <span aria-hidden="true">↗</span></button></div>
+            <p class="section-intro">Recorded actions for this appointment and its current item.</p>
+            <div id="activity-list" class="activity-list"></div>
+          </section>
+          <footer class="page-footer"><span>ClosetRelay</span><span>Care in the choice. Clarity in the handoff.</span><span id="connection-status">Connected locally</span></footer>
+        </div>
+      </main>
+    </div>
+  </div>
+  <dialog id="form-dialog" aria-labelledby="dialog-title"><form id="dialog-form"><div class="dialog-top"><span class="eyebrow" id="dialog-kicker">WORKSPACE</span><button type="button" class="icon-button" id="dialog-close" aria-label="Close dialog">×</button></div><h2 id="dialog-title"></h2><p id="dialog-description" class="muted"></p><div id="dialog-fields"></div><div id="dialog-error" class="field-error" role="alert" hidden></div><div class="dialog-actions"><button type="button" class="button button-quiet" id="dialog-cancel">Cancel</button><button type="submit" class="button button-primary" id="dialog-submit">Save</button></div></form></dialog>
+  <dialog id="record-dialog" aria-labelledby="record-title"><div class="dialog-top"><span class="eyebrow">EVIDENCE</span><button type="button" class="icon-button" id="record-close" aria-label="Close packing record">×</button></div><h2 id="record-title">Packing record</h2><div id="record-content"></div></dialog>
+  <div id="announcer" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+</body>
+</html>

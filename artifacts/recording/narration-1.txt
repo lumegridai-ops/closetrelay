@@ -1,0 +1,1 @@
+The operator records a specific item choice, then creates an exclusive hold. Looking at a garment alone never reserves it. The saved record keeps the item identity and version connected to this appointment.

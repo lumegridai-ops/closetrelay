@@ -1,0 +1,27 @@
+test_engine_failure_preserves_real_task_status_and_provenance (test_backend_extra.AdditionalBackendTests.test_engine_failure_preserves_real_task_status_and_provenance) ... FAIL
+test_memory_only_restart_does_not_implicitly_load_environment_key (test_backend_extra.AdditionalBackendTests.test_memory_only_restart_does_not_implicitly_load_environment_key) ... FAIL
+test_two_application_instances_coalesce_the_same_pending_request (test_backend_extra.AdditionalBackendTests.test_two_application_instances_coalesce_the_same_pending_request) ... ok
+
+======================================================================
+FAIL: test_engine_failure_preserves_real_task_status_and_provenance (test_backend_extra.AdditionalBackendTests.test_engine_failure_preserves_real_task_status_and_provenance)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/matt/hackathon/closetrelay/provider-tests/test_backend_extra.py", line 20, in test_engine_failure_preserves_real_task_status_and_provenance
+    self.assertEqual(result["provider"]["status"], "failed")
+AssertionError: 'stale' != 'failed'
+- stale
++ failed
+
+
+======================================================================
+FAIL: test_memory_only_restart_does_not_implicitly_load_environment_key (test_backend_extra.AdditionalBackendTests.test_memory_only_restart_does_not_implicitly_load_environment_key)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/matt/hackathon/closetrelay/provider-tests/test_backend_extra.py", line 30, in test_memory_only_restart_does_not_implicitly_load_environment_key
+    self.assertFalse(restarted.capability()["configured"],
+AssertionError: True is not false : Default startup restored an ambient key despite memory-only configuration
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.075s
+
+FAILED (failures=2)

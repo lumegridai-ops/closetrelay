@@ -1,0 +1,8 @@
+{
+  "tests": 52,
+  "failures": 0,
+  "errors": 0,
+  "source_unchanged_during_run": true,
+  "live_provider_requests": 0,
+  "fixture_kind": "synthetic responses and loopback transport only"
+}

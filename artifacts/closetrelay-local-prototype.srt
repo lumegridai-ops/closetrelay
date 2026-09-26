@@ -1,0 +1,40 @@
+1
+00:00:00,000 --> 00:00:15,488
+Closet Relay connects one clothing choice to the exact item held and
+packed. This is the working local application, recorded with fictional
+appointments and synthetic narration. One operator controls this
+prototype; separate client and staff logins are not implemented.
+
+2
+00:00:16,188 --> 00:00:27,901
+The operator records a specific item choice, then creates an exclusive
+hold. Looking at a garment alone never reserves it. The saved record
+keeps the item identity and version connected to this appointment.
+
+3
+00:00:28,602 --> 00:00:42,380
+At packing, I deliberately enter the wrong jacket number. The server
+refuses it and preserves the existing hold. Entering the correct
+number records one packing handoff. This is a recorded packing action,
+not proof of shipping or delivery.
+
+4
+00:00:43,082 --> 00:00:54,293
+Reloading keeps the handoff. The second appointment sees the packed
+item as unavailable for a new approval. The original choice and exact
+physical item are intended to remain connected across the workflow.
+
+5
+00:00:54,995 --> 00:01:10,714
+The optional You Cam preview is disabled because no API key is
+connected. The real adapter is implemented and tested offline, but
+live inference is unverified. No generated picture is substituted for
+a provider result. The non-photo workflow remains complete.
+
+6
+00:01:11,415 --> 00:01:28,180
+This prototype has no customer study or proven advantage over existing
+styling and inventory tools. Its next gates are real provider
+validation, authenticated remote access, and a fair workflow
+comparison. Source, failure cases and test evidence are available for
+review.

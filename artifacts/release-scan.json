@@ -1,0 +1,7 @@
+{
+  "scanned_text_files": 90,
+  "method": "high-confidence private-key and common token patterns; filename-only findings",
+  "credential_pattern_matches": [],
+  "real_youcam_key_created": false,
+  "private_db_excluded_by_gitignore": true
+}
