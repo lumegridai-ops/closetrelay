@@ -33,6 +33,19 @@ export default {
   async fetch(request,env,ctx) {
     const url=new URL(request.url),origin=request.headers.get('origin');
     if(origin&&origin!==url.origin)return finish(error(403,'Use the same workspace page.'));
+    // Temporary owner-only, non-generating probe while diagnosing first live access.
+    if(url.pathname==='/api/provider-diagnostic'){
+      if(request.method!=='GET'||!env.YOUCAM_SECRET_KEY||request.headers.get('X-Closet-Diagnostic')!==env.YOUCAM_SECRET_KEY)return finish(error(404,'Not found.'));
+      const rows=[];
+      for(const path of ['/s2s/v1.0/client/credit','/s2s/v2.0/task/cloth-v4']){
+        try{
+          const method=path.endsWith('credit')?'GET':'POST';
+          const response=await fetch('https://yce-api-01.makeupar.com'+path,{method,headers:{Authorization:'Bearer '+env.YOUCAM_API_KEY,'Content-Type':'application/json'},...(method==='POST'?{body:'{}'}:{}),redirect:'error',signal:AbortSignal.timeout(25000)});
+          rows.push({path,http:response.status,type:response.headers.get('content-type'),body:(await response.text()).slice(0,1600)});
+        }catch(e){rows.push({path,error:e.name,message:String(e.message).replaceAll(env.YOUCAM_API_KEY,'[redacted]').replaceAll(env.YOUCAM_SECRET_KEY,'[redacted]')});}
+      }
+      return finish(Response.json({rows}));
+    }
     if(url.pathname==='/health')return finish(Response.json({product:'ClosetRelay',hosting:'OpenAI Sites',mode:'isolated fictional demo',provider:!!env.YOUCAM_API_KEY,provider_scope:'fixed fictional adult and navy blazer'}));
     if(['/api/sample-preview','/api/sample-preview/image'].includes(url.pathname)){
       try{return finish(await samplePreview(request,env,ctx));}
