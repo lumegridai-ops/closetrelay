@@ -1,0 +1,74 @@
+{
+  "created_at": "2026-09-27T03:29:08Z",
+  "model": "gemini-3.8-flash-tts",
+  "voice": "Sulafat",
+  "style": "Warm, clear American English product narration. Confident, thoughtful and conversational; brisk natural pacing, about 165 words per minute. Natural emphasis on the consequence of each action. No sales voice and no theatrical pauses. Speak only the exact transcript.",
+  "text": "This is one local operator workflow. Separate client logins, real provider validation, and comparison with existing styling tools are still required.",
+  "seconds": 9.56,
+  "sample_rate": 24000,
+  "sha256": "773e28c251ad164198467512ed77f49eaddb847e87d72932a7ad4aa286b30e08",
+  "elapsed_seconds": 4.5,
+  "usage": {
+    "total_tokens": 332,
+    "total_input_tokens": 26,
+    "input_tokens_by_modality": [
+      {
+        "modality": "text",
+        "tokens": 26
+      }
+    ],
+    "total_cached_tokens": 0,
+    "total_output_tokens": 306,
+    "output_tokens_by_modality": [
+      {
+        "modality": "audio",
+        "tokens": 306
+      }
+    ],
+    "total_tool_use_tokens": 0,
+    "total_thought_tokens": 0,
+    "raw_prompt_token": 387,
+    "model_invocation_token_counts": [
+      {
+        "prompt_tokens_details": [
+          {
+            "modality": "text",
+            "tokens": 140
+          },
+          {
+            "modality": "audio",
+            "tokens": 201
+          }
+        ],
+        "candidates_tokens_details": [
+          {
+            "modality": "text",
+            "tokens": 241
+          }
+        ]
+      }
+    ],
+    "non_grounding_model_invocation_token_counts": [
+      {
+        "prompt_tokens_details": [
+          {
+            "modality": "text",
+            "tokens": 140
+          },
+          {
+            "modality": "audio",
+            "tokens": 201
+          }
+        ],
+        "candidates_tokens_details": [
+          {
+            "modality": "text",
+            "tokens": 241
+          }
+        ]
+      }
+    ]
+  },
+  "provider": "Google Gemini API",
+  "synthetic": true
+}

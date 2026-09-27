@@ -1,0 +1,105 @@
+{
+  "startedAt": "2026-09-27T03:35:24.554Z",
+  "database": "/tmp/closetrelay-design-1790480124553.sqlite3",
+  "base": "http://127.0.0.1:4384",
+  "syntheticFixtures": true,
+  "providerCalls": false,
+  "checks": [
+    {
+      "name": "Desktop real-data load, no-key preview, no horizontal overflow",
+      "status": "passed"
+    },
+    {
+      "name": "Search empty-state recovery preserves the selected garment",
+      "status": "passed"
+    },
+    {
+      "name": "Keyboard skip link and native dialog Escape restore focus",
+      "status": "passed"
+    },
+    {
+      "name": "Two real windows: stale competing hold is refused, A retains the item",
+      "status": "passed"
+    },
+    {
+      "name": "Condition revision invalidates the real old approval and hold; packing disappears",
+      "status": "passed",
+      "version": 2
+    },
+    {
+      "name": "Wrong-item refusal is inline, retains typed ID, preserves hold, focuses correction; desktop and phone",
+      "status": "passed"
+    },
+    {
+      "name": "Correct ID packs exactly one version-2 handoff and survives reload; saved record is readable at 390px",
+      "status": "passed"
+    },
+    {
+      "name": "Provider remains truthfully unavailable; password field empty, browser storage empty, no call made",
+      "status": "passed"
+    },
+    {
+      "name": "Packed garment cannot be approved elsewhere; mobile review jump focuses the selected item",
+      "status": "passed"
+    },
+    {
+      "name": "No uncaught browser JavaScript errors during the full workflow",
+      "status": "passed"
+    },
+    {
+      "name": "Axe WCAG-tagged desktop, phone, and phone-error scans contain zero violations (not full conformance certification)",
+      "status": "passed"
+    }
+  ],
+  "pageErrors": [],
+  "a11y": {
+    "desktop": {
+      "violations": [],
+      "incomplete": [
+        "color-contrast"
+      ]
+    },
+    "mobile-error": {
+      "violations": [],
+      "incomplete": [
+        "color-contrast"
+      ]
+    },
+    "mobile": {
+      "violations": [],
+      "incomplete": [
+        "color-contrast"
+      ]
+    }
+  },
+  "packingBounds": {
+    ".condition-note": {
+      "top": 137,
+      "bottom": 201.1875,
+      "width": 300
+    },
+    "#scan-id": {
+      "top": 334.75,
+      "bottom": 385.140625,
+      "width": 300
+    },
+    "#scan-help": {
+      "top": 397.140625,
+      "bottom": 432.328125,
+      "width": 300
+    },
+    "#pack-error": {
+      "top": 446.328125,
+      "bottom": 575.078125,
+      "width": 300
+    }
+  },
+  "status": "passed",
+  "finishedAt": "2026-09-27T03:35:27.011Z",
+  "sources": {
+    "ui/index.html": "f63e2197dee3b36ce6b52e90163560326494581f6ffaaf614b80015e860663cd",
+    "ui/styles.css": "b5cc4410d2e6bea5d9072e10c78ed745cb3a042fca24feb192b24b0410337925",
+    "ui/app.js": "5838ea74b841025085bc91de6555dc34c32536f8f992a62f9e27e2e90aaa9861",
+    "design/verify-ui.mjs": "62ecb6a9d024789659442168b95a36942f63670fd3219dcdbda3b022d492ea6d"
+  }
+}

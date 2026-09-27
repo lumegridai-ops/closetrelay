@@ -1,0 +1,22 @@
+{
+  "startedAt": "2026-09-27T03:34:27.263Z",
+  "database": "/tmp/closetrelay-design-1790480067261.sqlite3",
+  "base": "http://127.0.0.1:4384",
+  "syntheticFixtures": true,
+  "providerCalls": false,
+  "checks": [],
+  "pageErrors": [],
+  "a11y": {},
+  "status": "failed",
+  "error": {
+    "message": "page.addScriptTag: Executing inline script violates the following Content Security Policy directive 'script-src 'self''. Either the 'unsafe-inline' keyword, a hash ('sha256-KUl+HH4S/bJGFPX/o29WsoAG2hgPMZXADeUAFazmk3s='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked.",
+    "stack": "page.addScriptTag: Executing inline script violates the following Content Security Policy directive 'script-src 'self''. Either the 'unsafe-inline' keyword, a hash ('sha256-KUl+HH4S/bJGFPX/o29WsoAG2hgPMZXADeUAFazmk3s='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked.\n    at async axe (/Users/matt/hackathon/closetrelay/design/verify-ui.mjs:27:3)\n    at async file:///Users/matt/hackathon/closetrelay/design/verify-ui.mjs:43:36"
+  },
+  "finishedAt": "2026-09-27T03:34:27.836Z",
+  "sources": {
+    "ui/index.html": "f63e2197dee3b36ce6b52e90163560326494581f6ffaaf614b80015e860663cd",
+    "ui/styles.css": "b5cc4410d2e6bea5d9072e10c78ed745cb3a042fca24feb192b24b0410337925",
+    "ui/app.js": "5838ea74b841025085bc91de6555dc34c32536f8f992a62f9e27e2e90aaa9861",
+    "design/verify-ui.mjs": "5b1d3c3c4a7a887dbf45516117f299f63cbc7d13a254111f9a9a33210227cd2b"
+  }
+}

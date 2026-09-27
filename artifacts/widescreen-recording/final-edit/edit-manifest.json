@@ -1,0 +1,35 @@
+{
+  "source": "../frames/frames.json",
+  "edits": [
+    {
+      "file": "/Users/matt/hackathon/closetrelay/artifacts/widescreen-recording/frames/frame-00000.png",
+      "at": 1.631793708,
+      "sha256": "7ced793761a4a4031e55ce1d2f03d77ba3f2b3c78b23a33cfbcf3b9463365037",
+      "width": 3840,
+      "height": 2160,
+      "edit": "Hold preceding genuine frame during capture/reload flash",
+      "original_sha256": "11c714c3dfdd476894c7ef13ab50d183f62e33af0206b443b4a069971d2df77c"
+    },
+    {
+      "file": "/Users/matt/hackathon/closetrelay/artifacts/widescreen-recording/frames/frame-00004.png",
+      "at": 13.131266708,
+      "sha256": "20c2145aff6e358c388a46e92bcc969d35b58ae642efb167e85474ac2858f664",
+      "width": 3840,
+      "height": 2160,
+      "edit": "Hold preceding genuine frame during capture/reload flash",
+      "original_sha256": "1de0805be286fd95cfb2324f302a6449e9295ee43253d0c44daa5bf624777c0e"
+    },
+    {
+      "file": "/Users/matt/hackathon/closetrelay/artifacts/widescreen-recording/final-edit/focus-13.png",
+      "at": 26.83,
+      "sha256": "abe08ffa8baaf0e14331e0f2957ac2f841698b92f23dab6d0f8d1061bb37c456",
+      "width": 3840,
+      "height": 2160,
+      "edit": "1.33x editorial crop of native 4K source; fictional item label, expected ID, entered ID, held confirmation and full error retained",
+      "original_sha256": "e43221afb429645953378f5e6d7fd4c602d2a5fe44d3a4298ecd91a8702d2e7a"
+    }
+  ],
+  "duration_preserved": true,
+  "app_pixels_fabricated": false,
+  "caption_timing": "Sentence timings proportional to measured narration segment durations; independently reviewed"
+}

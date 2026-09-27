@@ -1,0 +1,255 @@
+{
+  "recordedAt": "2026-09-27T03:39:25.518Z",
+  "file": "closetrelay-demo-4k.mp4",
+  "actual_browser_interactions": true,
+  "fictional_records": true,
+  "live_youcam": false,
+  "submitted": false,
+  "narration": {
+    "provider": "Google Gemini",
+    "model": "gemini-3.8-flash-tts",
+    "voice": "Sulafat",
+    "synthetic": true
+  },
+  "browserErrors": [],
+  "probe": {
+    "streams": [
+      {
+        "index": 0,
+        "codec_name": "h264",
+        "codec_long_name": "H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10",
+        "profile": "High",
+        "codec_type": "video",
+        "codec_tag_string": "avc1",
+        "codec_tag": "0x31637661",
+        "width": 3840,
+        "height": 2160,
+        "coded_width": 3840,
+        "coded_height": 2160,
+        "has_b_frames": 2,
+        "pix_fmt": "yuv420p",
+        "level": 51,
+        "chroma_location": "left",
+        "field_order": "progressive",
+        "refs": 1,
+        "is_avc": "true",
+        "nal_length_size": "4",
+        "id": "0x1",
+        "r_frame_rate": "30/1",
+        "avg_frame_rate": "30/1",
+        "time_base": "1/15360",
+        "start_pts": 0,
+        "start_time": "0.000000",
+        "duration_ts": 1282048,
+        "duration": "83.466667",
+        "bit_rate": "566968",
+        "bits_per_raw_sample": "8",
+        "nb_frames": "2504",
+        "extradata_size": 46,
+        "disposition": {
+          "default": 1,
+          "dub": 0,
+          "original": 0,
+          "comment": 0,
+          "lyrics": 0,
+          "karaoke": 0,
+          "forced": 0,
+          "hearing_impaired": 0,
+          "visual_impaired": 0,
+          "clean_effects": 0,
+          "attached_pic": 0,
+          "timed_thumbnails": 0,
+          "non_diegetic": 0,
+          "captions": 0,
+          "descriptions": 0,
+          "metadata": 0,
+          "dependent": 0,
+          "still_image": 0,
+          "multilayer": 0
+        },
+        "tags": {
+          "language": "und",
+          "handler_name": "VideoHandler",
+          "vendor_id": "[0][0][0][0]",
+          "encoder": "Lavc62.11.100 libx264"
+        }
+      },
+      {
+        "index": 1,
+        "codec_name": "aac",
+        "codec_long_name": "AAC (Advanced Audio Coding)",
+        "profile": "LC",
+        "codec_type": "audio",
+        "codec_tag_string": "mp4a",
+        "codec_tag": "0x6134706d",
+        "sample_fmt": "fltp",
+        "sample_rate": "48000",
+        "channels": 1,
+        "channel_layout": "mono",
+        "bits_per_sample": 0,
+        "initial_padding": 0,
+        "id": "0x2",
+        "r_frame_rate": "0/0",
+        "avg_frame_rate": "0/0",
+        "time_base": "1/48000",
+        "start_pts": 0,
+        "start_time": "0.000000",
+        "duration_ts": 4006800,
+        "duration": "83.475000",
+        "bit_rate": "166866",
+        "nb_frames": "3913",
+        "extradata_size": 5,
+        "disposition": {
+          "default": 1,
+          "dub": 0,
+          "original": 0,
+          "comment": 0,
+          "lyrics": 0,
+          "karaoke": 0,
+          "forced": 0,
+          "hearing_impaired": 0,
+          "visual_impaired": 0,
+          "clean_effects": 0,
+          "attached_pic": 0,
+          "timed_thumbnails": 0,
+          "non_diegetic": 0,
+          "captions": 0,
+          "descriptions": 0,
+          "metadata": 0,
+          "dependent": 0,
+          "still_image": 0,
+          "multilayer": 0
+        },
+        "tags": {
+          "language": "und",
+          "handler_name": "SoundHandler",
+          "vendor_id": "[0][0][0][0]"
+        }
+      },
+      {
+        "index": 2,
+        "codec_name": "mov_text",
+        "codec_long_name": "MOV text",
+        "codec_type": "subtitle",
+        "codec_tag_string": "tx3g",
+        "codec_tag": "0x67337874",
+        "id": "0x3",
+        "r_frame_rate": "0/0",
+        "avg_frame_rate": "0/0",
+        "time_base": "1/1000000",
+        "start_pts": 0,
+        "start_time": "0.000000",
+        "duration_ts": 82275000,
+        "duration": "82.275000",
+        "bit_rate": "117",
+        "nb_frames": "32",
+        "extradata_size": 68,
+        "disposition": {
+          "default": 1,
+          "dub": 0,
+          "original": 0,
+          "comment": 0,
+          "lyrics": 0,
+          "karaoke": 0,
+          "forced": 0,
+          "hearing_impaired": 0,
+          "visual_impaired": 0,
+          "clean_effects": 0,
+          "attached_pic": 0,
+          "timed_thumbnails": 0,
+          "non_diegetic": 0,
+          "captions": 0,
+          "descriptions": 0,
+          "metadata": 0,
+          "dependent": 0,
+          "still_image": 0,
+          "multilayer": 0
+        },
+        "tags": {
+          "language": "eng",
+          "handler_name": "SubtitleHandler"
+        }
+      }
+    ],
+    "format": {
+      "filename": "/Users/matt/hackathon/closetrelay/artifacts/closetrelay-demo-4k.mp4",
+      "nb_streams": 3,
+      "nb_programs": 0,
+      "nb_stream_groups": 0,
+      "format_name": "mov,mp4,m4a,3gp,3g2,mj2",
+      "format_long_name": "QuickTime / MOV",
+      "start_time": "0.000000",
+      "duration": "83.475000",
+      "size": "7752507",
+      "bit_rate": "742977",
+      "probe_score": 100,
+      "tags": {
+        "major_brand": "isom",
+        "minor_version": "512",
+        "compatible_brands": "isomiso2avc1mp41",
+        "encoder": "Lavf62.3.100"
+      }
+    }
+  },
+  "sha256": "231bd697e012082542e48b971dcbb02ba8a1ff7fcd25c030882131c967ef444e",
+  "timeline": [
+    {
+      "index": 0,
+      "start": 0,
+      "end": 9.17,
+      "text": "A client chooses this jacket. A similar jacket is not the same choice. How do you keep that decision connected to the item that gets packed?"
+    },
+    {
+      "index": 1,
+      "start": 9.17027275,
+      "end": 22.291074082999998,
+      "text": "ClosetRelay connects a client's choice to one physical item. Here, fictional appointments use the working local application. Record the selected navy jacket, then place an exclusive hold."
+    },
+    {
+      "index": 2,
+      "start": 22.291089,
+      "end": 34.290357458,
+      "text": "Update the item's condition before packing, and the old approval and hold no longer apply. Review the changed record and approve it again. An old decision cannot silently carry forward."
+    },
+    {
+      "index": 3,
+      "start": 34.290364333,
+      "end": 42.250789833000006,
+      "text": "Let's scan the other jacket. The server rejects it. The correct jacket stays held, and nothing is marked packed."
+    },
+    {
+      "index": 4,
+      "start": 42.250797916,
+      "end": 53.011754791,
+      "text": "Scan the exact item instead. One packing handoff is recorded. Reloading preserves it, and another appointment cannot approve the packed item."
+    },
+    {
+      "index": 5,
+      "start": 53.01176375,
+      "end": 64.292001708,
+      "text": "The YouCam preview panel is designed to bind an image to that same item and consent revision. Live YouCam is not connected here; this video claims no generated result."
+    },
+    {
+      "index": 6,
+      "start": 64.292011083,
+      "end": 74.852943166,
+      "text": "This is one local operator workflow. Separate client logins, real provider validation, and comparison with existing styling tools are still required."
+    },
+    {
+      "index": 7,
+      "start": 74.87540470799999,
+      "end": 83.47540470799999,
+      "text": "ClosetRelay. The chosen item. The held item. The packed item. One continuous record."
+    }
+  ],
+  "source_frames": 25,
+  "source_resolution": [
+    3840,
+    2160
+  ],
+  "delivery_fps": 30,
+  "source_sampling": "Native PNG frames sampled at up to 12.5fps; measured actual timestamps and held frames, not motion interpolation",
+  "finalizedAt": "2026-09-27T03:49:02.730Z",
+  "editorial_edits": "Two hash-locked screenshot repaint offsets replaced by preceding real frame, preserving time; 36–42.2s uses a disclosed 1.33x crop; title cards refreshed; English selectable captions embedded.",
+  "original_source_frames": 23
+}

@@ -1,0 +1,198 @@
+{
+  "items": [
+    {
+      "id": "DEMO-JKT-01",
+      "label": "Sample navy jacket",
+      "photo_ref": null,
+      "location": "Fictional rack A / 01",
+      "condition": "Invented QA condition: small mark on left cuff; review this change before packing.",
+      "version": 2,
+      "state": "packed",
+      "owner": "demo-appointment-a",
+      "is_demo": true
+    },
+    {
+      "id": "DEMO-JKT-02",
+      "label": "Sample charcoal jacket",
+      "photo_ref": null,
+      "location": "Fictional rack A / 02",
+      "condition": "Invented card: missing inner label",
+      "version": 1,
+      "state": "available",
+      "owner": null,
+      "is_demo": true
+    },
+    {
+      "id": "DEMO-JKT-03",
+      "label": "Sample olive jacket",
+      "photo_ref": null,
+      "location": "Fictional rack B / 01",
+      "condition": "Invented card: no reported marks",
+      "version": 1,
+      "state": "available",
+      "owner": null,
+      "is_demo": true
+    },
+    {
+      "id": "DEMO-JKT-04",
+      "label": "Sample burgundy jacket",
+      "photo_ref": null,
+      "location": "Fictional rack B / 02",
+      "condition": "Invented card: small lining repair",
+      "version": 1,
+      "state": "available",
+      "owner": null,
+      "is_demo": true
+    }
+  ],
+  "appointments": [
+    {
+      "id": "demo-appointment-a",
+      "name": "Fictional appointment A",
+      "approval": {
+        "id": "89255130-1319-4233-bd34-50ed1f8b5d1c",
+        "appointment_id": "demo-appointment-a",
+        "item_id": "DEMO-JKT-01",
+        "item_version": 2,
+        "choice_revision": 2,
+        "state": "fulfilled",
+        "item_snapshot": "{\"condition\": \"Invented QA condition: small mark on left cuff; review this change before packing.\", \"id\": \"DEMO-JKT-01\", \"is_demo\": 1, \"label\": \"Sample navy jacket\", \"location\": \"Fictional rack A / 01\", \"owner\": null, \"photo_ref\": \"\", \"state\": \"available\", \"version\": 2}"
+      },
+      "current_approval": "89255130-1319-4233-bd34-50ed1f8b5d1c",
+      "choice_revision": 2,
+      "consent_revision": 0,
+      "is_demo": true,
+      "active_holds": [],
+      "handoffs": [
+        {
+          "id": "0a8c9901-8ab0-4b44-8289-0433d6bb2301",
+          "appointment_id": "demo-appointment-a",
+          "item_id": "DEMO-JKT-01",
+          "approval_id": "89255130-1319-4233-bd34-50ed1f8b5d1c",
+          "hold_id": "7de30a88-d1f9-4b8f-b8ab-ffe9ffce4130",
+          "item_version": 2,
+          "request_key": "ac36b11a-01cb-4685-a787-deb7174f637e"
+        }
+      ],
+      "source_ref": null,
+      "consent": false,
+      "unresolved_reason": null,
+      "previews": []
+    },
+    {
+      "id": "demo-appointment-b",
+      "name": "Fictional appointment B",
+      "approval": {
+        "id": "102ab995-9758-493d-8a66-3b2a17b89108",
+        "appointment_id": "demo-appointment-b",
+        "item_id": "DEMO-JKT-01",
+        "item_version": 1,
+        "choice_revision": 1,
+        "state": "needs_review",
+        "item_snapshot": "{\"condition\": \"Invented card: slight cuff wear\", \"id\": \"DEMO-JKT-01\", \"is_demo\": 1, \"label\": \"Sample navy jacket\", \"location\": \"Fictional rack A / 01\", \"owner\": null, \"photo_ref\": \"\", \"state\": \"available\", \"version\": 1}"
+      },
+      "current_approval": "102ab995-9758-493d-8a66-3b2a17b89108",
+      "choice_revision": 1,
+      "consent_revision": 0,
+      "is_demo": true,
+      "active_holds": [],
+      "handoffs": [],
+      "source_ref": null,
+      "consent": false,
+      "unresolved_reason": "Client review is required; the previous approval cannot allocate stock",
+      "previews": []
+    }
+  ],
+  "audit": [
+    {
+      "sequence": 1,
+      "kind": "client_approved",
+      "target": "demo-appointment-b",
+      "payload": {
+        "approval_id": "102ab995-9758-493d-8a66-3b2a17b89108",
+        "choice_revision": 1,
+        "item_id": "DEMO-JKT-01",
+        "item_version": 1
+      }
+    },
+    {
+      "sequence": 2,
+      "kind": "client_approved",
+      "target": "demo-appointment-a",
+      "payload": {
+        "approval_id": "d0c3492f-a03d-46e7-b7bb-48c79c986744",
+        "choice_revision": 1,
+        "item_id": "DEMO-JKT-01",
+        "item_version": 1
+      }
+    },
+    {
+      "sequence": 3,
+      "kind": "item_held",
+      "target": "demo-appointment-a",
+      "payload": {
+        "approval_id": "d0c3492f-a03d-46e7-b7bb-48c79c986744",
+        "hold_id": "80bee890-d8b1-4ac8-8406-dd709c3fa2cb",
+        "item_id": "DEMO-JKT-01"
+      }
+    },
+    {
+      "sequence": 4,
+      "kind": "item_changed",
+      "target": "DEMO-JKT-01",
+      "payload": {
+        "new_version": 2,
+        "old_version": 1
+      }
+    },
+    {
+      "sequence": 5,
+      "kind": "client_approved",
+      "target": "demo-appointment-a",
+      "payload": {
+        "approval_id": "89255130-1319-4233-bd34-50ed1f8b5d1c",
+        "choice_revision": 2,
+        "item_id": "DEMO-JKT-01",
+        "item_version": 2
+      }
+    },
+    {
+      "sequence": 6,
+      "kind": "item_held",
+      "target": "demo-appointment-a",
+      "payload": {
+        "approval_id": "89255130-1319-4233-bd34-50ed1f8b5d1c",
+        "hold_id": "7de30a88-d1f9-4b8f-b8ab-ffe9ffce4130",
+        "item_id": "DEMO-JKT-01"
+      }
+    },
+    {
+      "sequence": 7,
+      "kind": "item_packed",
+      "target": "demo-appointment-a",
+      "payload": {
+        "approval_id": "89255130-1319-4233-bd34-50ed1f8b5d1c",
+        "handoff_id": "0a8c9901-8ab0-4b44-8289-0433d6bb2301",
+        "hold_id": "7de30a88-d1f9-4b8f-b8ab-ffe9ffce4130",
+        "item_id": "DEMO-JKT-01"
+      }
+    }
+  ],
+  "provider": {
+    "name": "YouCam Clothes V4",
+    "configured": false,
+    "enabled": false,
+    "reason": "Preview is disabled: no API key is configured in server memory",
+    "configuration_is_not_api_verification": true,
+    "retention_note": "Local withdrawal stops requests and display. Upstream cancellation/deletion is not implemented or verified.",
+    "category": "outer",
+    "real_photos_required": true
+  },
+  "server_time": "2026-09-27T03:39:38.080914+00:00",
+  "scope": {
+    "mode": "local_operator",
+    "authentication": false,
+    "demo_catalog": true,
+    "notice": "One local operator controls every appointment. View selection is not authenticated client identity. Sample records are fictional; they contain no photos."
+  }
+}

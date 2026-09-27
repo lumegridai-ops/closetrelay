@@ -1,0 +1,101 @@
+1
+00:00:00,000 --> 00:00:01,790
+A client chooses this jacket.
+
+2
+00:00:01,790 --> 00:00:04,260
+A similar jacket is not the same choice.
+
+3
+00:00:04,260 --> 00:00:08,520
+How do you keep that decision connected to the item that gets
+packed?
+
+4
+00:00:09,170 --> 00:00:13,101
+ClosetRelay connects a client's choice to one physical item.
+
+5
+00:00:13,101 --> 00:00:17,228
+Here, fictional appointments use the working local application.
+
+6
+00:00:17,228 --> 00:00:21,290
+Record the selected navy jacket, then place an exclusive hold.
+
+7
+00:00:22,291 --> 00:00:27,701
+Update the item's condition before packing, and the old approval
+and hold no longer apply.
+
+8
+00:00:27,701 --> 00:00:30,526
+Review the changed record and approve it again.
+
+9
+00:00:30,526 --> 00:00:33,291
+An old decision cannot silently carry forward.
+
+10
+00:00:34,290 --> 00:00:36,062
+Let's scan the other jacket.
+
+11
+00:00:36,062 --> 00:00:37,454
+The server rejects it.
+
+12
+00:00:37,454 --> 00:00:41,250
+The correct jacket stays held, and nothing is marked packed.
+
+13
+00:00:42,251 --> 00:00:44,217
+Scan the exact item instead.
+
+14
+00:00:44,217 --> 00:00:46,464
+One packing handoff is recorded.
+
+15
+00:00:46,464 --> 00:00:52,011
+Reloading preserves it, and another appointment cannot approve
+the packed item.
+
+16
+00:00:53,012 --> 00:00:58,771
+The YouCam preview panel is designed to bind an image to that
+same item and consent revision.
+
+17
+00:00:58,771 --> 00:01:03,292
+Live YouCam is not connected here; this video claims no
+generated result.
+
+18
+00:01:04,292 --> 00:01:06,617
+This is one local operator workflow.
+
+19
+00:01:06,617 --> 00:01:13,852
+Separate client logins, real provider validation, and comparison
+with existing styling tools are still required.
+
+20
+00:01:14,875 --> 00:01:15,985
+ClosetRelay.
+
+21
+00:01:15,985 --> 00:01:17,465
+The chosen item.
+
+22
+00:01:17,465 --> 00:01:18,760
+The held item.
+
+23
+00:01:18,760 --> 00:01:20,240
+The packed item.
+
+24
+00:01:20,240 --> 00:01:22,275
+One continuous record.

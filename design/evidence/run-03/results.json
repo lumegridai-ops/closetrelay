@@ -1,0 +1,42 @@
+{
+  "startedAt": "2026-09-27T03:35:03.658Z",
+  "database": "/tmp/closetrelay-design-1790480103657.sqlite3",
+  "base": "http://127.0.0.1:4384",
+  "syntheticFixtures": true,
+  "providerCalls": false,
+  "checks": [
+    {
+      "name": "Desktop real-data load, no-key preview, no horizontal overflow",
+      "status": "passed"
+    },
+    {
+      "name": "Search empty-state recovery preserves the selected garment",
+      "status": "passed"
+    },
+    {
+      "name": "Keyboard skip link and native dialog Escape restore focus",
+      "status": "passed"
+    }
+  ],
+  "pageErrors": [],
+  "a11y": {
+    "desktop": {
+      "violations": [],
+      "incomplete": [
+        "color-contrast"
+      ]
+    }
+  },
+  "status": "failed",
+  "error": {
+    "message": "Expected values to be strictly equal:\n+ actual - expected\n\n+ 'demo-appointment-a'\n- 'DEMO-APPOINTMENT-A'\n",
+    "stack": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n+ actual - expected\n\n+ 'demo-appointment-a'\n- 'DEMO-APPOINTMENT-A'\n\n    at file:///Users/matt/hackathon/closetrelay/design/verify-ui.mjs:68:38"
+  },
+  "finishedAt": "2026-09-27T03:35:05.114Z",
+  "sources": {
+    "ui/index.html": "f63e2197dee3b36ce6b52e90163560326494581f6ffaaf614b80015e860663cd",
+    "ui/styles.css": "b5cc4410d2e6bea5d9072e10c78ed745cb3a042fca24feb192b24b0410337925",
+    "ui/app.js": "5838ea74b841025085bc91de6555dc34c32536f8f992a62f9e27e2e90aaa9861",
+    "design/verify-ui.mjs": "5098870ca35b3e1b59e37da07528b2dc5b08562261e41bf5d261a2b638d2b6fe"
+  }
+}

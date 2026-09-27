@@ -1,0 +1,51 @@
+{
+  "startedAt": "2026-09-27T03:38:44.090Z",
+  "database": "/tmp/closetrelay-design-1790480324089.sqlite3",
+  "base": "http://127.0.0.1:4384",
+  "syntheticFixtures": true,
+  "providerCalls": false,
+  "checks": [
+    {
+      "name": "Desktop real-data load, no-key preview, no horizontal overflow",
+      "status": "passed"
+    },
+    {
+      "name": "Search empty-state recovery preserves the selected garment",
+      "status": "passed"
+    },
+    {
+      "name": "Keyboard skip link and native dialog Escape restore focus",
+      "status": "passed"
+    },
+    {
+      "name": "Two real windows: stale competing hold is refused, A retains the item",
+      "status": "passed"
+    },
+    {
+      "name": "Condition revision invalidates the real old approval and hold; packing disappears",
+      "status": "passed",
+      "version": 2
+    }
+  ],
+  "pageErrors": [],
+  "a11y": {
+    "desktop": {
+      "violations": [],
+      "incomplete": [
+        "color-contrast"
+      ]
+    }
+  },
+  "status": "failed",
+  "error": {
+    "message": "A removed stale packing form must not be offered as recovery.",
+    "stack": "AssertionError [ERR_ASSERTION]: A removed stale packing form must not be offered as recovery.\n    at file:///Users/matt/hackathon/closetrelay/design/verify-ui.mjs:83:10"
+  },
+  "finishedAt": "2026-09-27T03:38:45.836Z",
+  "sources": {
+    "ui/index.html": "f63e2197dee3b36ce6b52e90163560326494581f6ffaaf614b80015e860663cd",
+    "ui/styles.css": "20b05d0f30a9f7c6d8fd5a3e09e5f9d90deb2cef9c31c8147f26dabbff806b37",
+    "ui/app.js": "f0260aada4b951964a2aa4346936c5ab36d5b1d851a83fe0249d46aef0bea047",
+    "design/verify-ui.mjs": "523c00f169c2175f366bbbfaec33533b54128e18fa2b03f65f591d62430d11f1"
+  }
+}

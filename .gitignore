@@ -15,3 +15,12 @@ node_modules/
 artifacts/recording/*.aiff
 artifacts/recording/*.wav
 artifacts/recording/*.webm
+artifacts/widescreen-recording/frames/
+artifacts/widescreen-recording/frames.ffconcat
+artifacts/narration/*.wav
+
+artifacts/*-4k.mp4
+artifacts/widescreen-recording/review/
+artifacts/widescreen-recording/final-edit/*.png
+
+artifacts/presentation-source.zip

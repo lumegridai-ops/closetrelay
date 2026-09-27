@@ -1,0 +1,74 @@
+{
+  "created_at": "2026-09-27T03:23:11Z",
+  "model": "gemini-3.8-flash-tts",
+  "voice": "Sulafat",
+  "style": "Warm, clear American English product narration. Confident, thoughtful and conversational; brisk natural pacing, about 165 words per minute. Natural emphasis on the consequence of each action. No sales voice and no theatrical pauses. Speak only the exact transcript.",
+  "text": "ClosetRelay connects a client's choice to one physical item. Here, fictional appointments use the working local application. Record the selected navy jacket, then place an exclusive hold.",
+  "seconds": 12.12,
+  "sample_rate": 24000,
+  "sha256": "72fb36de4f9769d89292b97e5b6304f5b7b30285069d21ebcfc24fdee340d0eb",
+  "elapsed_seconds": 5.61,
+  "usage": {
+    "total_tokens": 426,
+    "total_input_tokens": 38,
+    "input_tokens_by_modality": [
+      {
+        "modality": "text",
+        "tokens": 38
+      }
+    ],
+    "total_cached_tokens": 0,
+    "total_output_tokens": 388,
+    "output_tokens_by_modality": [
+      {
+        "modality": "audio",
+        "tokens": 388
+      }
+    ],
+    "total_tool_use_tokens": 0,
+    "total_thought_tokens": 0,
+    "raw_prompt_token": 410,
+    "model_invocation_token_counts": [
+      {
+        "prompt_tokens_details": [
+          {
+            "modality": "text",
+            "tokens": 152
+          },
+          {
+            "modality": "audio",
+            "tokens": 201
+          }
+        ],
+        "candidates_tokens_details": [
+          {
+            "modality": "text",
+            "tokens": 305
+          }
+        ]
+      }
+    ],
+    "non_grounding_model_invocation_token_counts": [
+      {
+        "prompt_tokens_details": [
+          {
+            "modality": "text",
+            "tokens": 152
+          },
+          {
+            "modality": "audio",
+            "tokens": 201
+          }
+        ],
+        "candidates_tokens_details": [
+          {
+            "modality": "text",
+            "tokens": 305
+          }
+        ]
+      }
+    ]
+  },
+  "provider": "Google Gemini API",
+  "synthetic": true
+}

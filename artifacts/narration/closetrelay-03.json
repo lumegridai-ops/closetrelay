@@ -1,0 +1,74 @@
+{
+  "created_at": "2026-09-27T03:24:07Z",
+  "model": "gemini-3.8-flash-tts",
+  "voice": "Sulafat",
+  "style": "Warm, clear American English product narration. Confident, thoughtful and conversational; brisk natural pacing, about 165 words per minute. Natural emphasis on the consequence of each action. No sales voice and no theatrical pauses. Speak only the exact transcript.",
+  "text": "Let's scan the other jacket. The server rejects it. The correct jacket stays held, and nothing is marked packed.",
+  "seconds": 6.96,
+  "sample_rate": 24000,
+  "sha256": "484bd77254ed84b63d84bd42900fc37f0b5f99592414252cfcac23d981ef1bca",
+  "elapsed_seconds": 19.07,
+  "usage": {
+    "total_tokens": 249,
+    "total_input_tokens": 26,
+    "input_tokens_by_modality": [
+      {
+        "modality": "text",
+        "tokens": 26
+      }
+    ],
+    "total_cached_tokens": 0,
+    "total_output_tokens": 223,
+    "output_tokens_by_modality": [
+      {
+        "modality": "audio",
+        "tokens": 223
+      }
+    ],
+    "total_tool_use_tokens": 0,
+    "total_thought_tokens": 0,
+    "raw_prompt_token": 387,
+    "model_invocation_token_counts": [
+      {
+        "prompt_tokens_details": [
+          {
+            "modality": "text",
+            "tokens": 140
+          },
+          {
+            "modality": "audio",
+            "tokens": 201
+          }
+        ],
+        "candidates_tokens_details": [
+          {
+            "modality": "text",
+            "tokens": 176
+          }
+        ]
+      }
+    ],
+    "non_grounding_model_invocation_token_counts": [
+      {
+        "prompt_tokens_details": [
+          {
+            "modality": "text",
+            "tokens": 140
+          },
+          {
+            "modality": "audio",
+            "tokens": 201
+          }
+        ],
+        "candidates_tokens_details": [
+          {
+            "modality": "text",
+            "tokens": 176
+          }
+        ]
+      }
+    ]
+  },
+  "provider": "Google Gemini API",
+  "synthetic": true
+}

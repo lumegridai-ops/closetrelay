@@ -1,0 +1,4 @@
+The item wasn’t packed.
+Scanned item does not match the exact held and approved item
+
+Check the tag and enter the approved item ID to try again.

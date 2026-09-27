@@ -1,0 +1,115 @@
+{
+  "startedAt": "2026-09-27T03:39:35.312Z",
+  "database": "/tmp/closetrelay-design-1790480375310.sqlite3",
+  "base": "http://127.0.0.1:4384",
+  "syntheticFixtures": true,
+  "providerCalls": false,
+  "checks": [
+    {
+      "name": "Desktop real-data load, no-key preview, no horizontal overflow",
+      "status": "passed"
+    },
+    {
+      "name": "Search empty-state recovery preserves the selected garment",
+      "status": "passed"
+    },
+    {
+      "name": "Keyboard skip link and native dialog Escape restore focus",
+      "status": "passed"
+    },
+    {
+      "name": "Two real windows: stale competing hold is refused, A retains the item",
+      "status": "passed"
+    },
+    {
+      "name": "Condition revision invalidates the real old approval and hold; packing disappears",
+      "status": "passed",
+      "version": 2
+    },
+    {
+      "name": "A second window cannot pack a revoked hold; recovery names the real stale-hold failure",
+      "status": "passed"
+    },
+    {
+      "name": "Wrong-item refusal is inline, retains typed ID, preserves hold, focuses correction; desktop and phone",
+      "status": "passed"
+    },
+    {
+      "name": "Correct ID packs exactly one version-2 handoff and survives reload; saved record is readable at 390px",
+      "status": "passed"
+    },
+    {
+      "name": "Provider remains truthfully unavailable; password field empty, browser storage empty, no call made",
+      "status": "passed"
+    },
+    {
+      "name": "Packed garment cannot be approved elsewhere; mobile review jump focuses the selected item",
+      "status": "passed"
+    },
+    {
+      "name": "No uncaught browser JavaScript errors during the full workflow",
+      "status": "passed"
+    },
+    {
+      "name": "Axe WCAG-tagged desktop, phone, and phone-error scans contain zero violations (not full conformance certification)",
+      "status": "passed"
+    }
+  ],
+  "pageErrors": [],
+  "a11y": {
+    "desktop": {
+      "violations": [],
+      "incomplete": [
+        "color-contrast"
+      ]
+    },
+    "mobile-error": {
+      "violations": [],
+      "incomplete": [
+        "color-contrast"
+      ]
+    },
+    "mobile": {
+      "violations": [],
+      "incomplete": [
+        "color-contrast"
+      ]
+    }
+  },
+  "packingBounds": {
+    ".condition-note": {
+      "top": 98.5,
+      "bottom": 167.46875,
+      "width": 300
+    },
+    "#scan-id": {
+      "top": 333.03125,
+      "bottom": 386.625,
+      "width": 300
+    },
+    "#scan-help": {
+      "top": 398.625,
+      "bottom": 437,
+      "width": 300
+    },
+    "#pack-error": {
+      "top": 451,
+      "bottom": 592.546875,
+      "width": 300
+    }
+  },
+  "criticalText": {
+    ".chosen-item p": "14px",
+    ".detail-list": "14px",
+    ".condition-note": "14px",
+    ".button-primary": "14px"
+  },
+  "status": "passed",
+  "finishedAt": "2026-09-27T03:39:38.083Z",
+  "sources": {
+    "ui/index.html": "f63e2197dee3b36ce6b52e90163560326494581f6ffaaf614b80015e860663cd",
+    "ui/styles.css": "20b05d0f30a9f7c6d8fd5a3e09e5f9d90deb2cef9c31c8147f26dabbff806b37",
+    "ui/app.js": "091aaf1f3b8a62a87e1548c0821def5acf98878f597a34427c6ae0d049b69165",
+    "design/verify-ui.mjs": "c127956115d355f0d421b6dbfd6b0934502c3009347b1f6987dcc9821bd4b056"
+  }
+}

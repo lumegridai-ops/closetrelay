@@ -4,7 +4,7 @@
 const $ = (selector, root = document) => root.querySelector(selector);
 const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
 const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const state = {data:null, appointmentId:null, itemId:null, filter:'all', busy:false, dialog:null, packKeys:new Map(), preview:null, previewTimer:null};
+const state = {data:null, appointmentId:null, itemId:null, filter:'all', search:'', busy:false, dialog:null, packKeys:new Map(), packHoldId:null, packDraft:'', packError:null, preview:null, previewTimer:null};
 
 class ApiError extends Error {
   constructor(status, body) {
@@ -74,32 +74,40 @@ async function loadState({quiet = false} = {}) {
   if (!quiet) announce('Workspace refreshed from saved records.');
 }
 
-async function mutate(path, method, body, success, {dialog = false} = {}) {
+async function mutate(path, method, body, success, {dialog = false, packing = false} = {}) {
   if (state.busy) return null;
   state.busy = true;
+  let failed = false;
+  $('#choice-panel').setAttribute('aria-busy','true');
   $$('button[type="submit"], [data-action="approve"], [data-action="hold"], [data-action="release"]').forEach(b => { b.disabled = true; });
   try {
     const result = await api(path,method,body);
+    if (packing) { state.packDraft=''; state.packError=null; }
     if (dialog) $('#form-dialog').close();
     await loadState({quiet:true});
     if (success) notice(success.title, typeof success.text === 'function' ? success.text(result) : success.text);
     return result;
   } catch (error) {
+    failed = true;
     if (dialog && $('#form-dialog').open) {
       $('#dialog-error').hidden = false;
       $('#dialog-error').textContent = error.message;
+      $('#dialog-error').focus();
     }
-    notice(error.status === 409 ? 'The change was stopped.' : 'This action did not finish.', error.message, error);
+    if (packing) state.packError = error.message;
     try { await loadState({quiet:true}); } catch { /* Preserve the original mutation failure. */ }
+    // A stale hold may remove the form during refresh. In that case name the actual failure.
+    notice(error.status === 409 ? 'The change was stopped.' : 'This action did not finish.', packing && state.packError ? 'Review the item ID in the packing form. The saved record has been refreshed.' : error.message, error);
     return null;
   } finally {
     state.busy = false;
+    $('#choice-panel').setAttribute('aria-busy','false');
     $('#dialog-submit').disabled = false;
     if (state.data) {
       renderPanel();
       if (!$('#form-dialog').open) {
         const next = $('#scan-id') || $('[data-action="hold"]:not([disabled])') || $('[data-action="approve"]:not([disabled])') || $('[data-action="manifest"]') || $('#choice-heading');
-        if (next) { if (next.tagName === 'H2') next.tabIndex = -1; next.focus({preventScroll:true}); }
+        if (next) { if (next.tagName === 'H2') next.tabIndex = -1; next.focus({preventScroll:true}); if (packing && failed) next.scrollIntoView({block:'center',behavior:'instant'}); }
       }
     }
   }
@@ -123,9 +131,9 @@ function render() {
   const a = appointment();
   const status = appointmentStatus(a);
   $('#sample-banner').hidden = !(state.data.scope?.demo_catalog || state.data.items.some(i => i.is_demo) || state.data.appointments.some(i => i.is_demo));
-  $('#appointment-kicker').textContent = a ? `${a.is_demo ? 'FICTIONAL ' : ''}APPOINTMENT · ${a.id}` : 'LOCAL WORKSPACE';
-  $('#appointment-name').textContent = a ? a.name : 'A choice worth keeping.';
-  $('#appointment-subtitle').textContent = a ? 'Choose with care. Keep that choice intact through packing.' : 'Add an appointment to begin recording an item choice.';
+  $('#appointment-kicker').textContent = a ? `${a.is_demo ? 'FICTIONAL APPOINTMENT' : 'CURRENT APPOINTMENT'} · ${a.id}` : 'LOCAL WORKSPACE';
+  $('#appointment-name').textContent = a ? (a.is_demo ? a.name.replace(/^Fictional\s+/i,'').replace(/^appointment/i,'Appointment') : a.name) : 'A choice worth keeping.';
+  $('#appointment-subtitle').textContent = a ? 'Their choice. The exact garment. A thoughtful handoff.' : 'Add an appointment to begin recording an item choice.';
   $('#appointment-status').className = `status ${status.type}`;
   $('#appointment-status').textContent = a ? status.label : 'No appointment';
   $('#appointments').innerHTML = state.data.appointments.map(p => {
@@ -135,7 +143,7 @@ function render() {
     return `<button class="appointment-button${p.id === state.appointmentId ? ' selected' : ''}" data-appointment="${esc(p.id)}" aria-label="${esc(p.name)} · ${esc(s.short)}" aria-current="${p.id === state.appointmentId ? 'true':'false'}"><span class="appointment-avatar" aria-hidden="true">${esc(initials)}</span><span class="appointment-meta"><strong>${esc(displayName)}</strong><small>${esc(s.short)}${p.is_demo ? ' · Fictional' : ''}</small></span><span class="appointment-arrow" aria-hidden="true">›</span></button>`;
   }).join('') || '<p class="muted">No appointments yet.</p>';
   const packed = isPacked(a), held = !!currentHold(a), approved = validApproval(a) || packed;
-  const steps = [{name:'Choose',note:approved ? 'Choice recorded' : 'Review the item',done:approved,current:!approved},{name:'Hold',note:held ? 'Reserved here' : packed ? 'Hold fulfilled' : 'Keep it available',done:held || packed,current:approved && !held && !packed},{name:'Pack',note:packed ? 'Handoff recorded' : 'Check the exact ID',done:packed,current:held}];
+  const steps = [{name:'Client choice',note:approved ? 'Approval recorded' : 'Review together',done:approved,current:!approved},{name:'Staff hold',note:held ? 'Reserved here' : packed ? 'Hold fulfilled' : 'Reserve one item',done:held || packed,current:approved && !held && !packed},{name:'Exact-item packing',note:packed ? 'Handoff recorded' : 'Confirm the tag',done:packed,current:held}];
   $('#progress').innerHTML = steps.map((s,i) => `<li class="${s.done?'complete':s.current?'current':''}" ${s.current?'aria-current="step"':''}><span class="step-dot" aria-hidden="true">${s.done?'✓':i+1}</span><span class="step-label">${s.name}<small>${s.note}</small></span></li>`).join('');
   renderItems();
   renderPanel();
@@ -147,13 +155,14 @@ function render() {
 
 function renderItems() {
   const focusedItem = document.activeElement?.dataset?.item;
-  const items = state.data.items.filter(i => state.filter === 'all' || i.state === state.filter);
+  const term = state.search.trim().toLocaleLowerCase();
+  const items = state.data.items.filter(i => (state.filter === 'all' || i.state === state.filter) && (!term || [i.id,i.label,i.location,i.condition].some(v=>String(v).toLocaleLowerCase().includes(term))));
   $('#rack-count').textContent = `${items.length} ${items.length === 1?'item':'items'}`;
   $$('[data-filter]').forEach(b => { const on = b.dataset.filter === state.filter; b.classList.toggle('active',on); b.setAttribute('aria-pressed',String(on)); });
   $('#items').innerHTML = items.map(item => {
     const photo = safeImage(item.photo_ref);
     return `<button class="item-card${item.id === state.itemId?' selected':''}" data-item="${esc(item.id)}" aria-pressed="${item.id === state.itemId}" aria-label="View ${esc(item.label)}, ${esc(item.id)}, ${esc(itemStatus(item))}"><div class="item-visual">${photo ? `<img src="${esc(photo)}" alt="${esc(item.label)} · ${item.is_demo?'fictional test image':'uploaded item image'}" loading="lazy">` : garment(item)}<span class="visual-label">${item.is_demo?(photo?'FICTIONAL · TEST IMAGE':'FICTIONAL · ILLUSTRATION'):photo?'UPLOADED ITEM IMAGE':'NO ITEM PHOTO · ILLUSTRATION'}</span><span class="selected-check" aria-hidden="true">✓</span></div><div class="item-info"><div class="item-topline"><span class="item-id">${esc(item.id)}</span><span class="status ${esc(item.state)}">${esc(itemStatus(item))}</span></div><h3>${esc(item.label)}</h3><p>${esc(item.condition)}</p><div class="item-bottom"><span>${esc(item.location)}</span><span>Version ${esc(item.version)}</span></div></div></button>`;
-  }).join('') || `<div class="empty-rack">${state.filter === 'all'?'No items yet. Add an item with its condition and storage location.':'No items match this view. Try “All items” or refresh the records.'}</div>`;
+  }).join('') || `<div class="empty-rack"><strong>${state.data.items.length?'No matching items.':'The rack is ready for its first item.'}</strong><p>${state.data.items.length?'Try another name, item ID or location. Your selection has not changed.':'Add an item with its condition and storage location.'}</p>${state.data.items.length?'<button class="button" data-action="reset-search">Show all items</button>':''}</div>`;
   if (focusedItem) $$('[data-item]').find(b => b.dataset.item === focusedItem)?.focus({preventScroll:true});
 }
 
@@ -161,7 +170,8 @@ function renderPanel() {
   const item = selectedItem(), a = appointment();
   const panel = $('#choice-panel');
   if (!item || !a) {
-    panel.innerHTML = '<div class="panel-heading"><span class="eyebrow">THE NEXT STEP</span><h2>Make room for a choice.</h2></div><div class="panel-body"><p>Add an appointment and an item to start the handoff.</p></div>';
+    panel.innerHTML = '<div class="panel-heading"><span class="eyebrow">THE NEXT STEP</span><h2 id="choice-heading">Make room for a choice.</h2></div><div class="panel-body"><p>Add an appointment and an item to start the handoff.</p></div>';
+    $('#mobile-selection').hidden=true;
     return;
   }
   const approval = a.approval, hold = currentHold(a), packed = isPacked(a);
@@ -169,6 +179,9 @@ function renderPanel() {
   const current = chosenHere && validApproval(a);
   const blocked = item.state !== 'available' && !(item.state === 'held' && item.owner === a.id);
   const heldHere = hold?.item_id === item.id;
+  if (state.packHoldId !== hold?.id) { state.packHoldId=hold?.id || null; state.packDraft=''; state.packError=null; }
+  $('#mobile-selection').hidden=false;
+  $('#mobile-item-name').textContent=item.label;
   let approvalBlock = '', actionBlock = '';
   if (packed) {
     const handoff = a.handoffs[0];
@@ -185,14 +198,14 @@ function renderPanel() {
     approvalBlock = `<div class="approval-state"><strong>Currently viewing a different item.</strong><p>The earlier choice is ${esc(approval.item_id)}. A new approval replaces it.</p></div>`;
   }
   if (!packed && heldHere && current) {
-    actionBlock = `<form id="pack-form" class="pack-form"><label for="scan-id">Scan or type the item ID</label><input id="scan-id" name="item_id" autocomplete="off" spellcheck="false" placeholder="Exact ID on the garment" required aria-describedby="scan-help"><p class="compact-note" id="scan-help">Expected: <strong>${esc(item.id)}</strong>. A different item will be refused.</p><button type="submit" class="button button-primary full-width">Confirm exact item & pack <span aria-hidden="true">→</span></button></form><div class="panel-actions"><button class="button button-quiet" data-action="release">Release this hold</button></div>`;
+    actionBlock = `<form id="pack-form" class="pack-form"><label for="scan-id">Scan or type the item ID</label><input id="scan-id" name="item_id" value="${esc(state.packDraft)}" autocomplete="off" spellcheck="false" placeholder="Exact ID on the garment" required aria-invalid="${!!state.packError}" aria-describedby="scan-help${state.packError?' pack-error':''}"><p class="compact-note" id="scan-help">Expected: <strong>${esc(item.id)}</strong>. Check the garment tag before packing.</p>${state.packError?`<div id="pack-error" class="field-error" role="alert"><strong>The item wasn’t packed.</strong><span>${esc(state.packError)}</span><p>Check the tag and enter the approved item ID to try again.</p></div>`:''}<button type="submit" class="button button-primary full-width">Confirm exact item & pack <span aria-hidden="true">→</span></button></form><div class="panel-actions"><button class="button button-quiet" data-action="release">Release this hold</button></div>`;
   } else if (!packed && current) {
     actionBlock = `<button class="button button-primary full-width" data-action="hold" ${blocked?'disabled':''}>Place an exclusive hold <span aria-hidden="true">→</span></button><p class="action-note">${blocked?'This item is no longer available. Choose another item; no substitute is selected for you.':'This reserves this exact item for this appointment.'}</p>`;
   } else if (!packed) {
     actionBlock = `<button class="button button-primary full-width" data-action="approve" ${blocked?'disabled':''}>${approval?'Record a new approval':'Record client approval'} <span aria-hidden="true">→</span></button><p class="action-note">${blocked?'This item cannot be approved while it is held elsewhere, unavailable or packed.':a.is_demo?'Practice approval for this fictional appointment. No actual client consent is claimed.':'Record this only after the client agrees to the item and its current condition.'}</p>`;
   }
   const photo = safeImage(item.photo_ref);
-  panel.innerHTML = `<div class="panel-heading"><span class="eyebrow">${packed?'THE COMPLETED HANDOFF':'YOUR NEXT STEP'}</span><h2 id="choice-heading">${packed?'The right item, packed.':heldHere?'Ready for the handoff.':current?'Keep this choice safe.':'A considered choice.'}</h2></div><div class="panel-body"><div class="chosen-item"><div class="chosen-thumb">${photo?`<img src="${esc(photo)}" alt="${esc(item.label)} · uploaded item image">`:garment(item,true)}</div><div><h3>${esc(item.label)}</h3><p>${esc(item.id)}${item.is_demo?' · Fictional item':''}</p></div></div><dl class="detail-list"><dt>Location</dt><dd>${esc(item.location)}</dd><dt>Item state</dt><dd>${esc(itemStatus(item))}</dd><dt>Version</dt><dd>${esc(item.version)}${chosenHere && approval?` · approved version ${esc(approval.item_version)}`:''}</dd></dl><div class="condition-note"><strong>Condition recorded by staff</strong>${esc(item.condition)}</div>${approvalBlock}${actionBlock}<div class="panel-actions"><button class="button button-quiet" data-action="edit-item" ${item.state==='packed'?'disabled':''}>Update item details</button></div>${approval?`<details class="inspect-details"><summary>Inspect the approval record</summary><code>Approval: ${esc(approval.id)}</code><code>Item: ${esc(approval.item_id)} · Version: ${esc(approval.item_version)}</code><code>State: ${esc(approval.state)}</code>${hold?`<code>Hold: ${esc(hold.id)}</code>`:''}</details>`:''}</div>${renderPreview(a)}`;
+  panel.innerHTML = `<div class="panel-heading"><div class="panel-role"><span class="eyebrow">${packed?'HANDOFF COMPLETE':heldHere?'STAFF · PACKING':current?'STAFF · INVENTORY HOLD':'CLIENT · ITEM CHOICE'}</span><span class="panel-role-number">${packed?'✓':heldHere?'03 / 03':current?'02 / 03':'01 / 03'}</span></div><h2 id="choice-heading">${packed?'The right item, packed.':heldHere?'Ready for the handoff.':current?'Keep this choice safe.':'A considered choice.'}</h2></div><div class="panel-body"><div class="chosen-item"><div class="chosen-thumb">${photo?`<img src="${esc(photo)}" alt="${esc(item.label)} · uploaded item image">`:garment(item,true)}</div><div><h3>${esc(item.label)}</h3><p>${esc(item.id)}${item.is_demo?' · Fictional item':''}</p></div></div><dl class="detail-list"><dt>Location</dt><dd>${esc(item.location)}</dd><dt>Item state</dt><dd>${esc(itemStatus(item))}</dd><dt>Version</dt><dd>${esc(item.version)}${chosenHere && approval?` · approved version ${esc(approval.item_version)}`:''}</dd></dl><div class="condition-note"><strong>Condition recorded by staff</strong>${esc(item.condition)}</div>${approvalBlock}${actionBlock}<div class="panel-actions"><button class="button button-quiet" data-action="edit-item" ${item.state==='packed'?'disabled':''}>Update item details</button></div>${approval?`<details class="inspect-details"><summary>Inspect the approval record</summary><code>Approval: ${esc(approval.id)}</code><code>Item: ${esc(approval.item_id)} · Version: ${esc(approval.item_version)}</code><code>State: ${esc(approval.state)}</code>${hold?`<code>Hold: ${esc(hold.id)}</code>`:''}</details>`:''}</div>${renderPreview(a)}`;
 }
 
 function renderPreview(a) {
@@ -201,7 +214,7 @@ function renderPreview(a) {
   const result = p?.displayable && p.status === 'succeeded' && safeImage(p.result_url);
   const viewingApproved = validApproval(a) && state.itemId === a.approval.item_id;
   const usable = result && viewingApproved && p.item_id === a.approval.item_id && p.choice_revision === a.choice_revision && p.item_version === itemById(a.approval.item_id)?.version && a.consent;
-  return `<section class="preview-section" aria-label="Optional appearance preview"><div class="preview-heading"><h3>See a little further.</h3><span class="optional-tag">Optional</span></div><p>An appearance preview can be useful. Choosing an item never requires a personal photo.</p>${usable?`<figure style="margin:0"><img class="preview-image" src="${esc(result)}" alt="YouCam appearance illustration for the currently approved item"><figcaption class="compact-note">YouCam appearance illustration${a.is_demo?' using fictional test material':''}. Not proof of fit, measurements or condition.</figcaption></figure>`:''}<button class="button full-width" data-action="preview" ${!ready || !viewingApproved?'disabled':''}>${!ready?'YouCam preview unavailable':!viewingApproved?'Approve this item before previewing':a.consent?'Request a YouCam preview':'Choose a photo for YouCam'}</button><div class="panel-actions"><button class="button button-quiet" data-action="configure-provider">${ready?'Change YouCam key':'Connect YouCam'}</button>${ready?'<button class="button button-quiet" data-action="clear-provider">Clear key</button>':''}</div>${a.consent?'<button class="button button-quiet full-width" data-action="revoke-consent" style="margin-top:7px">Withdraw photo consent</button>':''}${p?`<p><strong>Preview for ${esc(p.item_id)}:</strong> ${esc(readable(p.status))}${p.reason?` · ${esc(p.reason)}`:''}</p>${['pending','processing','queued','running'].includes(p.status)?`<button class="button full-width" data-action="refresh-preview" data-preview-id="${esc(p.id)}">Check provider result</button>`:''}<details class="inspect-details"><summary>Inspect actual provider evidence</summary><code>Task record: ${esc(p.id)}</code><code>Provider task: ${esc(p.provider?.task_id || 'Not created')}</code><code>Provider status: ${esc(p.provider?.status || 'Not available')}</code>${p.provider?.error?`<code>${esc(JSON.stringify(p.provider.error))}</code>`:''}<code>Result displayable: ${p.displayable?'yes':'no'}</code></details>`:''}<details class="preview-details"><summary>${ready?'Before sending a personal photo':'Why is the preview unavailable?'}</summary><p>${ready?'A key is configured in server memory. This does not verify API access, credits or a successful preview. A consented adult photo and the garment photograph are sent to YouCam only when requested. Results illustrate appearance and cannot establish fit, fabric feel or garment condition.':esc(provider.reason || 'No active YouCam provider is available. No preview was generated or replaced with a sample result.')}</p><p>You can complete the approval, hold and packing steps without a preview.</p><p><a href="https://www.perfectcorp.com/perfectbeauty/youcam/privacy-policy-api" target="_blank" rel="noopener noreferrer">YouCam API privacy policy ↗</a>. Withdrawing here clears local access; it does not promise immediate deletion at the provider.</p></details></section>`;
+  return `<section class="preview-section" aria-label="Optional appearance preview"><div class="preview-heading"><h3>An optional second look.</h3><span class="optional-tag">YouCam</span></div><p>Explore appearance with a consented photo, or continue without one. A preview cannot verify fit or condition.</p>${usable?`<figure style="margin:0"><img class="preview-image" src="${esc(result)}" alt="YouCam appearance illustration for the currently approved item"><figcaption class="compact-note">YouCam appearance illustration${a.is_demo?' using fictional test material':''}. Not proof of fit, measurements or condition.</figcaption></figure>`:''}<button class="button full-width" data-action="preview" ${!ready || !viewingApproved?'disabled':''}>${!ready?'YouCam preview unavailable':!viewingApproved?'Approve this item before previewing':a.consent?'Request a YouCam preview':'Choose a photo for YouCam'}</button><div class="panel-actions"><button class="button button-quiet" data-action="configure-provider">${ready?'Change YouCam key':'Connect YouCam'}</button>${ready?'<button class="button button-quiet" data-action="clear-provider">Clear key</button>':''}</div>${a.consent?'<button class="button button-quiet full-width" data-action="revoke-consent" style="margin-top:7px">Withdraw photo consent</button>':''}${p?`<p><strong>Preview for ${esc(p.item_id)}:</strong> ${esc(readable(p.status))}${p.reason?` · ${esc(p.reason)}`:''}</p>${['pending','processing','queued','running'].includes(p.status)?`<button class="button full-width" data-action="refresh-preview" data-preview-id="${esc(p.id)}">Check provider result</button>`:''}<details class="inspect-details"><summary>Inspect actual provider evidence</summary><code>Task record: ${esc(p.id)}</code><code>Provider task: ${esc(p.provider?.task_id || 'Not created')}</code><code>Provider status: ${esc(p.provider?.status || 'Not available')}</code>${p.provider?.error?`<code>${esc(JSON.stringify(p.provider.error))}</code>`:''}<code>Result displayable: ${p.displayable?'yes':'no'}</code></details>`:''}<details class="preview-details"><summary>${ready?'Before sending a personal photo':'Why is the preview unavailable?'}</summary><p>${ready?'A key is configured in server memory. This does not verify API access, credits or a successful preview. A consented adult photo and the garment photograph are sent to YouCam only when requested. Results illustrate appearance and cannot establish fit, fabric feel or garment condition.':esc(provider.reason || 'No active YouCam provider is available. No preview was generated or replaced with a sample result.')}</p><p>You can complete the approval, hold and packing steps without a preview.</p><p><a href="https://www.perfectcorp.com/perfectbeauty/youcam/privacy-policy-api" target="_blank" rel="noopener noreferrer">YouCam API privacy policy ↗</a>. Withdrawing here clears local access; it does not promise immediate deletion at the provider.</p></details></section>`;
 }
 
 function schedulePreviewRead() {
@@ -342,6 +355,8 @@ async function action(name,button) {
   if (state.busy) return;
   const a = appointment(), item = selectedItem();
   if (name === 'dismiss') { $('#message').hidden=true; return; }
+  if (name === 'reset-search') { state.filter='all'; state.search=''; $('#item-search').value=''; renderItems(); $('#item-search').focus(); announce('Showing all items.'); return; }
+  if (name === 'show-choice') { const heading=$('#choice-heading'); heading.tabIndex=-1; heading.focus({preventScroll:true}); $('#choice-panel').scrollIntoView({block:'start',behavior:'instant'}); return; }
   if (name === 'manifest') { await manifest(); return; }
   if (name === 'edit-item') { openDialog('edit'); return; }
   if (name === 'configure-provider') { openDialog('provider'); return; }
@@ -371,6 +386,7 @@ async function action(name,button) {
 document.addEventListener('click',event => {
   const b = event.target.closest('button');
   if (!b || b.disabled) return;
+  if (state.busy) return;
   if (b.dataset.appointment) {
     state.appointmentId=b.dataset.appointment; state.itemId=appointment()?.approval?.item_id || state.data.items.find(i=>i.state==='available')?.id || state.data.items[0]?.id; state.preview=null; render(); schedulePreviewRead(); announce(`Opened ${appointment().name}.`);
   } else if (b.dataset.item) {
@@ -385,16 +401,23 @@ document.addEventListener('submit',async event => {
   const item_id = new FormData(event.target).get('item_id').trim();
   const key = `${hold.id}:${item_id}`;
   if (!state.packKeys.has(key)) state.packKeys.set(key,crypto.randomUUID());
-  await mutate(`/api/holds/${encodeURIComponent(hold.id)}/pack`,'POST',{item_id,request_key:state.packKeys.get(key)},{title:'Exact item confirmed and packed.',text:`${item_id} is tied to this approval and handoff record. Shipping or delivery has not been recorded.`});
+  state.packDraft=item_id;
+  await mutate(`/api/holds/${encodeURIComponent(hold.id)}/pack`,'POST',{item_id,request_key:state.packKeys.get(key)},{title:'Exact item confirmed and packed.',text:`${item_id} is tied to this approval and handoff record. Shipping or delivery has not been recorded.`},{packing:true});
 });
-$('#refresh').addEventListener('click',async()=>{ try { await loadState(); notice('Workspace refreshed.','The item and appointment states now match the saved records.'); } catch(error) { notice('Could not refresh.',error.message,error); } });
-$('#add-appointment').addEventListener('click',()=>openDialog('appointment'));
-$('#add-item').addEventListener('click',()=>openDialog('item'));
+document.addEventListener('input',event=>{ if (event.target.id==='scan-id') state.packDraft=event.target.value; });
+$('#item-search').addEventListener('input',event=>{ state.search=event.target.value; renderItems(); });
+$('#refresh').addEventListener('click',async()=>{ if (state.busy) return; try { await loadState(); notice('Workspace refreshed.','The item and appointment states now match the saved records.'); } catch(error) { notice('Could not refresh.',error.message,error); } });
+$('#add-appointment').addEventListener('click',()=>{ if (!state.busy) openDialog('appointment'); });
+$('#add-item').addEventListener('click',()=>{ if (!state.busy) openDialog('item'); });
 $('#manifest').addEventListener('click',manifest);
 $('#dialog-form').addEventListener('submit',submitDialog);
 $('#dialog-close').addEventListener('click',()=>$('#form-dialog').close());
 $('#dialog-cancel').addEventListener('click',()=>$('#form-dialog').close());
 $('#record-close').addEventListener('click',()=>$('#record-dialog').close());
 for (const dialog of $$('dialog')) dialog.addEventListener('click',event=>{ if (event.target===dialog) { const r=dialog.getBoundingClientRect(); if(event.clientX<r.left || event.clientX>r.right || event.clientY<r.top || event.clientY>r.bottom) dialog.close(); } });
+// The mobile shortcut gets out of the way as soon as the appointment sheet is visible.
+new IntersectionObserver(entries=>{
+  $('#mobile-selection').classList.toggle('choice-visible',entries[0].isIntersecting);
+}).observe($('#choice-panel'));
 
 loadState().catch(error=>{ $('#loading').hidden=true; notice('The workspace could not open.',error.message,error); $('#connection-status').textContent='Not connected'; });

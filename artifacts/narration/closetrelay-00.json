@@ -1,0 +1,74 @@
+{
+  "created_at": "2026-09-27T03:22:49Z",
+  "model": "gemini-3.8-flash-tts",
+  "voice": "Sulafat",
+  "style": "Warm, clear American English product narration. Confident, thoughtful and conversational; brisk natural pacing, about 165 words per minute. Natural emphasis on the consequence of each action. No sales voice and no theatrical pauses. Speak only the exact transcript.",
+  "text": "A client chooses this jacket. A similar jacket is not the same choice. How do you keep that decision connected to the item that gets packed?",
+  "seconds": 8.52,
+  "sample_rate": 24000,
+  "sha256": "aaf2084cdd0034df411a5d7fd992895166fb1c1666c176fc4905cea96a42c69e",
+  "elapsed_seconds": 5.31,
+  "usage": {
+    "total_tokens": 303,
+    "total_input_tokens": 30,
+    "input_tokens_by_modality": [
+      {
+        "modality": "text",
+        "tokens": 30
+      }
+    ],
+    "total_cached_tokens": 0,
+    "total_output_tokens": 273,
+    "output_tokens_by_modality": [
+      {
+        "modality": "audio",
+        "tokens": 273
+      }
+    ],
+    "total_tool_use_tokens": 0,
+    "total_thought_tokens": 0,
+    "raw_prompt_token": 395,
+    "model_invocation_token_counts": [
+      {
+        "prompt_tokens_details": [
+          {
+            "modality": "text",
+            "tokens": 144
+          },
+          {
+            "modality": "audio",
+            "tokens": 201
+          }
+        ],
+        "candidates_tokens_details": [
+          {
+            "modality": "text",
+            "tokens": 215
+          }
+        ]
+      }
+    ],
+    "non_grounding_model_invocation_token_counts": [
+      {
+        "prompt_tokens_details": [
+          {
+            "modality": "text",
+            "tokens": 144
+          },
+          {
+            "modality": "audio",
+            "tokens": 201
+          }
+        ],
+        "candidates_tokens_details": [
+          {
+            "modality": "text",
+            "tokens": 215
+          }
+        ]
+      }
+    ]
+  },
+  "provider": "Google Gemini API",
+  "synthetic": true
+}

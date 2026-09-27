@@ -1,0 +1,50 @@
+[
+  {
+    "index": 0,
+    "start": 0,
+    "end": 9.17,
+    "text": "A client chooses this jacket. A similar jacket is not the same choice. How do you keep that decision connected to the item that gets packed?"
+  },
+  {
+    "index": 1,
+    "start": 9.17027275,
+    "end": 22.291074082999998,
+    "text": "ClosetRelay connects a client's choice to one physical item. Here, fictional appointments use the working local application. Record the selected navy jacket, then place an exclusive hold."
+  },
+  {
+    "index": 2,
+    "start": 22.291089,
+    "end": 34.290357458,
+    "text": "Update the item's condition before packing, and the old approval and hold no longer apply. Review the changed record and approve it again. An old decision cannot silently carry forward."
+  },
+  {
+    "index": 3,
+    "start": 34.290364333,
+    "end": 42.250789833000006,
+    "text": "Let's scan the other jacket. The server rejects it. The correct jacket stays held, and nothing is marked packed."
+  },
+  {
+    "index": 4,
+    "start": 42.250797916,
+    "end": 53.011754791,
+    "text": "Scan the exact item instead. One packing handoff is recorded. Reloading preserves it, and another appointment cannot approve the packed item."
+  },
+  {
+    "index": 5,
+    "start": 53.01176375,
+    "end": 64.292001708,
+    "text": "The YouCam preview panel is designed to bind an image to that same item and consent revision. Live YouCam is not connected here; this video claims no generated result."
+  },
+  {
+    "index": 6,
+    "start": 64.292011083,
+    "end": 74.852943166,
+    "text": "This is one local operator workflow. Separate client logins, real provider validation, and comparison with existing styling tools are still required."
+  },
+  {
+    "index": 7,
+    "start": 74.87540470799999,
+    "end": 83.47540470799999,
+    "text": "ClosetRelay. The chosen item. The held item. The packed item. One continuous record."
+  }
+]

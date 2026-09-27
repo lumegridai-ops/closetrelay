@@ -1,0 +1,16 @@
+{
+  "project": "closetrelay",
+  "model": "gemini-3.8-flash-tts",
+  "voice": "Sulafat",
+  "style": "Warm, clear American English product narration. Confident, thoughtful and conversational; brisk natural pacing, about 165 words per minute. Natural emphasis on the consequence of each action. No sales voice and no theatrical pauses. Speak only the exact transcript.",
+  "segments": [
+    "A client chooses this jacket. A similar jacket is not the same choice. How do you keep that decision connected to the item that gets packed?",
+    "ClosetRelay connects a client's choice to one physical item. Here, fictional appointments use the working local application. Record the selected navy jacket, then place an exclusive hold.",
+    "Update the item's condition before packing, and the old approval and hold no longer apply. Review the changed record and approve it again. An old decision cannot silently carry forward.",
+    "Let's scan the other jacket. The server rejects it. The correct jacket stays held, and nothing is marked packed.",
+    "Scan the exact item instead. One packing handoff is recorded. Reloading preserves it, and another appointment cannot approve the packed item.",
+    "The YouCam preview panel is designed to bind an image to that same item and consent revision. Live YouCam is not connected here; this video claims no generated result.",
+    "This is one local operator workflow. Separate client logins, real provider validation, and comparison with existing styling tools are still required.",
+    "ClosetRelay. The chosen item. The held item. The packed item. One continuous record."
+  ]
+}

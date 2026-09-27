@@ -6,9 +6,13 @@ ClosetRelay is a working **local, single-operator prototype** for a remote caree
 
 **Current provider status: real integration code is implemented, but a successful live YouCam request has not been verified.** A missing key disables previews. Offline tests use explicit test doubles; their results are not provider inference. The included portrait and jacket are clearly disclosed synthetic test inputs.
 
-[Watch the 88-second local prototype demo](artifacts/closetrelay-local-prototype.mp4) · [Transcript](artifacts/closetrelay-local-prototype.srt) · [Independent media review](artifacts/recording/FINAL_REVIEW.md)
+[4K demo — release download](https://github.com/lumegridai-ops/closetrelay/releases/download/v0.2.0-preperiod/closetrelay-demo-4k.mp4) · [Transcript / captions](artifacts/closetrelay-demo-4k.srt) · [Recording manifest](artifacts/widescreen-demo-manifest.json)
 
-![The actual local workspace with explicitly fictional records](artifacts/ui/desktop-final.png)
+The new demonstration shows the custom appointment studio from native 3840×2160 browser captures with **Google Gemini synthetic narration** and fictional records. It includes a condition change that invalidates an existing approval and hold before the wrong-item and correct-item packing checks. The release includes the original source media and the final master; the local file is `artifacts/closetrelay-demo-4k.mp4`. The manifest identifies the current cut and its exact duration/hash.
+
+![The custom appointment studio with explicitly fictional records](artifacts/desktop-4k.png)
+
+The shared rack and appointment sheet keep the garment's ID, location, recorded condition and current decision together. Search, a phone layout, keyboard focus, inline packing errors and a separate optional preview area support that workflow. [Design research and browser evidence](design/DESIGN_REVIEW.md).
 
 ## Try it
 
@@ -22,8 +26,9 @@ Open <http://127.0.0.1:4323>. The first run creates a persistent SQLite database
 
 1. Record a choice of an available item for an appointment.
 2. Create a hold for that current approval.
-3. Confirm the exact item ID at packing. A different ID is refused.
-4. Inspect the packing record and activity history.
+3. To exercise the revision safeguard, choose **Update item details**, change its condition, and save. The old approval and hold are invalidated; review and approve the changed item before placing a new hold.
+4. Confirm the exact item ID at packing. A different ID is refused beside the scan field and leaves the current hold intact.
+5. Inspect the packing record and activity history.
 
 Use the second appointment to test shared stock. An inventory change or released hold requires a new review; an old approval cannot silently reclaim the garment. The complete selection and packing route works without a portrait or AI preview.
 
@@ -43,7 +48,7 @@ Upload a source image for the appointment and a reference photograph for the gar
 
 Changing the choice, garment, source image, or consent invalidates the old result. Withdrawing consent stops further local display and processing and removes local personal media records. This is not a guarantee of forensic erasure or removal from backups. **Upstream cancellation/deletion is not implemented or verified.** The [provider privacy policy](https://www.perfectcorp.com/perfectbeauty/youcam/privacy-policy-api) governs provider retention.
 
-Read [provider details](PROVIDER.md), [backend behavior](BACKEND.md), and [UI checks](UI.md) for the actual implementation and limits.
+Read [provider details](PROVIDER.md), [backend behavior](BACKEND.md), and the [current design and UI checks](design/DESIGN_REVIEW.md) for the actual implementation and limits. [Earlier UI evidence](UI.md) is preserved.
 
 ## Verification
 
@@ -52,7 +57,7 @@ python3 -B -m unittest discover -s provider-tests -v
 python3 -B -m unittest discover -s backend-tests -v
 ```
 
-[QA evidence](docs/QA.md) records the checks actually executed, observed defects, and remaining gaps. Passing simulated state/transport tests does not establish a successful live integration, real client benefit, or an advantage over another product.
+[QA evidence](docs/QA.md) records the checks actually executed, observed defects, and remaining gaps. The redesigned UI passed 12 browser checks against a fresh real SQLite workspace. Three axe scans—desktop, phone and phone error state—reported zero automated violations, each with one incomplete contrast category. These are bounded checks, not full accessibility certification or user validation. Passing simulated state/transport tests does not establish a successful live integration, real client benefit, or an advantage over another product.
 
 ## Why this project
 
@@ -62,6 +67,6 @@ Existing career-clothing programs already serve remote clients. Shared styling p
 
 The target is the [YouCam API Skin AI + Ecommerce Hackathon](https://youcam-api-skin-ai-ecommerce.devpost.com/rules). This September 26, 2026 prototype predates the September 29 submission period. Its dated history is preserved; eligibility of an eventual existing-project entry requires significant updates during the permitted period and accurate disclosure of prior work. This repository is **not evidence of a submitted entry**.
 
-Codex and collaborating AI agents researched, implemented, generated the two disclosed test images, and tested the project under the operator's direction. No client interviews, charity partnership, adoption, productivity improvement, fit accuracy, or winning probability is claimed. [Submission draft](docs/SUBMISSION.md).
+Codex and collaborating AI agents researched, implemented, generated the two disclosed test images, and tested the project under the operator's direction. The new demo uses Google Gemini's synthetic voice; it does not represent a client or testimonial. No client interviews, charity partnership, adoption, productivity improvement, fit accuracy, or winning probability is claimed. [Submission draft](docs/SUBMISSION.md).
 
 MIT-licensed source. Provider services, policies, and third-party materials retain their own terms. No private database, real client photograph, or API key is part of this repository.

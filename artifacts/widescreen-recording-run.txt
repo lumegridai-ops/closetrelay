@@ -1,0 +1,1 @@
+{"output":"/Users/matt/hackathon/closetrelay/artifacts/closetrelay-demo-4k.mp4","seconds":"83.475000","sha256":"0d1189493a7bed70c10ef91718d89a8c63b57acf52e216b7e37ce06cd4d9a287","sourceFrames":23}

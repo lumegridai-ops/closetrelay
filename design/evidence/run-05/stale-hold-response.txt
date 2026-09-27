@@ -1,0 +1,6 @@
+The change was stopped.
+
+Item is held or unavailable; no hold was created for this appointment
+
+×
+Response details
