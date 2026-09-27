@@ -34,6 +34,7 @@ globalThis.closetHostedRequest=(path,options)=>{
 };
 try{
   await sync();
+  await import('/hosted/try-on.mjs');
   await import('/app.js');
 }catch(error){
   document.querySelector('#loading').hidden=true;

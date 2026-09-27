@@ -7,7 +7,8 @@
   "scripts": {
     "record:demo": "node tools/record-demo.mjs",
     "build": "node tools/build-site.mjs",
-    "db:generate": "drizzle-kit generate"
+    "db:generate": "drizzle-kit generate",
+    "test:sample": "npm run build && node hosted-tests/sample-preview.mjs"
   },
   "devDependencies": {
     "drizzle-kit": "^0.31.11",

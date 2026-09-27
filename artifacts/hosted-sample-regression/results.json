@@ -1,0 +1,99 @@
+{
+  "at": "2026-09-27T05:29:23.806Z",
+  "kind": "Independent source-copy test with actual SQLite SQL and explicitly fake YouCam/R2; no live request",
+  "source_path": "/Users/matt/hackathon/closetrelay/hosted/sample-preview.mjs",
+  "source_sha256": "6c09a352c9cb19515b5820cf063532841e16a8170a78bfcf1b9ccd246bbad0ea",
+  "fixture_hashes": {
+    "adult": "3755f0ee4729280203772be8c93c98ffd3230e54df9db7699485a03067fb7f85",
+    "blazer": "792ce5cd0be8a029b92d2db4adcb1ead78aa77557bde88a08384ae3ced905a62"
+  },
+  "node": "v26.4.0",
+  "tests": [
+    {
+      "name": "no key prevents allocation and exposes only disabled capability",
+      "status": "passed"
+    },
+    {
+      "name": "strict sample request, origin and method reject caller-controlled input",
+      "status": "passed"
+    },
+    {
+      "name": "30 concurrent visitors and repeated POSTs claim one global attempt",
+      "status": "passed"
+    },
+    {
+      "name": "lost creation response remains uncertain and never retries across reloads",
+      "status": "passed"
+    },
+    {
+      "name": "R2 task receipt recovers when both D1 task-id writes fail",
+      "status": "passed"
+    },
+    {
+      "name": "lost R2 receipt confirmation falls back to the received task-id without creation retry",
+      "status": "passed"
+    },
+    {
+      "name": "documented task_status success produces the real downloaded bytes",
+      "status": "passed"
+    },
+    {
+      "name": "documented task_status error is terminal without implicit recreation",
+      "status": "passed"
+    },
+    {
+      "name": "documented running status does not falsely report a provider read error",
+      "status": "passed"
+    },
+    {
+      "name": "transient poll failure waits until due time and resumes same task",
+      "status": "passed"
+    },
+    {
+      "name": "untrusted result host is rejected before download",
+      "status": "passed"
+    },
+    {
+      "name": "result stream above eight MiB is rejected without persisting image",
+      "status": "passed"
+    },
+    {
+      "name": "truncated PNG signature cannot be marked a successful image",
+      "status": "passed"
+    },
+    {
+      "name": "saved fixture hash mismatch never reuses or overwrites the slot",
+      "status": "passed"
+    },
+    {
+      "name": "ten-minute deadline fails without extra provider reads or new attempts",
+      "status": "passed"
+    },
+    {
+      "name": "poll lease prevents a second in-flight read when first call takes over ten seconds",
+      "status": "passed"
+    },
+    {
+      "name": "a failed earlier result download cannot overwrite an already committed success",
+      "status": "passed"
+    },
+    {
+      "name": "expired 65s lease: delayed old R2 success cannot replace newer saved bytes",
+      "status": "passed"
+    },
+    {
+      "name": "expired lease: old R2 failure does not attach an error to newer success",
+      "status": "passed"
+    },
+    {
+      "name": "late task-receipt recovery cannot downgrade a result another request already completed",
+      "status": "passed"
+    },
+    {
+      "name": "streamed POST is canceled at 128 bytes rather than drained without bound",
+      "status": "passed"
+    }
+  ],
+  "passed": 21,
+  "failed": 0
+}

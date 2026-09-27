@@ -1,6 +1,6 @@
 {
   "url": "http://127.0.0.1:4327",
-  "at": "2026-09-27T04:47:25.612Z",
+  "at": "2026-09-27T05:26:22.295Z",
   "checks": [
     "Anonymous browser opens actual Pyodide workflow with Source Sans 3.",
     "Real UI approval/hold persists; wrong-item packing writes no handoff.",
@@ -13,6 +13,6 @@
     "Phone layout has no horizontal document overflow."
   ],
   "errors": [],
-  "initialLoadMs": 2341,
+  "initialLoadMs": 1859,
   "status": "passed"
 }

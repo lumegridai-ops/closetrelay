@@ -10,7 +10,7 @@ OpenAI Sites serves the actual interface, workflow source and Worker endpoints. 
 
 Each request first checks the saved revision. Concurrent writes compare revisions atomically; a losing tab reloads current state. The browser computes inventory transitions; the server stores isolated opaque snapshots and does not independently validate each inventory action. This design is appropriate for the fictional demo and is not a production multi-operator authorization system.
 
-Clearing cookies or moving to a different browser loses access to that browser's workspace. The cookie lasts 30 days; that is not a promise that server rows are automatically deleted at cookie expiry. Snapshots are capped at 2MB. Personal photo uploads, provider credentials and live API operations are not accepted by this hosted demonstration.
+Clearing cookies or moving to a different browser loses access to that browser's workspace. The cookie lasts 30 days; that is not a promise that server rows are automatically deleted at cookie expiry. Snapshots are capped at 2MB. Personal photo uploads and visitor-supplied provider credentials are not accepted. A separate [fixed fictional try-on](HOSTED_TRY_ON.md) performs one server-side YouCam task using an owner-configured secret; its result is explicitly shared.
 
 The pinned Python runtime downloads from the official Pyodide distribution on jsDelivr. Its first load may take about 15 seconds on the measured connection; later observed checks took about 2–5 seconds. The interface shows loading and retry states. It does not claim offline startup or universal load performance.
 

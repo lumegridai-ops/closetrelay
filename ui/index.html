@@ -4,35 +4,37 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f5f2ec">
-  <title>ClosetRelay · A thoughtful handoff</title>
+  <title>ClosetRelay · Choose, reserve, pack</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%23292d29'/%3E%3Cpath d='M26 23a6 6 0 1 1 6 6v6L14 45h36L32 35' fill='none' stroke='%23edc668' stroke-width='4' stroke-linejoin='round'/%3E%3C/svg%3E">
   <link rel="preload" href="/fonts/SourceSans3VF-Upright.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/styles.css">
   <link rel="stylesheet" href="/typography.css">
+  <link rel="stylesheet" href="/atelier.css">
   <script src="/app.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to appointment</a>
   <div class="shell">
     <aside class="sidebar" aria-label="Workspace navigation">
-      <a class="brand" href="/" aria-label="ClosetRelay home"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 40 40"><path d="M16 13a4 4 0 1 1 4 4v5L7 30h26L20 22"/></svg></span><span>ClosetRelay<small>A thoughtful handoff.</small></span></a>
+      <a class="brand" href="/" aria-label="ClosetRelay home"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 40 40"><path d="M16 13a4 4 0 1 1 4 4v5L7 30h26L20 22"/></svg></span><span>ClosetRelay<small>Career clothing, carried through.</small></span></a>
       <div class="nav-title"><span>Appointments</span><button id="add-appointment" class="icon-button" aria-label="Add appointment" title="Add appointment">+</button></div>
       <nav id="appointments" aria-label="Appointments"><p class="muted">Loading appointments…</p></nav>
-      <div class="sidebar-end"><p class="sidebar-line">A good choice.<br><em>Carried through.</em></p><details class="workspace-info"><summary>About this workspace</summary><p>One local operator records a client's choice and the staff handoff. Client and staff roles are workflow steps, not separate signed-in accounts.</p></details><a class="sidebar-bottom" href="#activity">Activity record <span aria-hidden="true">↗</span></a></div>
+      <div class="sidebar-end"><details class="workspace-info"><summary>About this workspace</summary><p>One local operator records a client's choice and the staff handoff. Client and staff roles are workflow steps, not separate signed-in accounts.</p></details><a class="sidebar-bottom" href="#activity">Activity record <span aria-hidden="true">↗</span></a></div>
     </aside>
     <div class="workspace">
-      <header class="topbar"><div class="breadcrumb"><span>Workspace</span><span aria-hidden="true">/</span><strong>Appointments</strong></div><div class="topbar-actions"><span class="local-label"><span class="online-dot"></span> Local workspace</span><button id="refresh" class="button button-quiet"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M19 8a8 8 0 1 0 1 8M19 3v5h-5"/></svg> Refresh</button></div></header>
+      <header class="topbar"><div class="breadcrumb"><strong>Clothing appointments</strong></div><div class="topbar-actions"><span class="local-label"><span class="online-dot"></span> Local workspace</span><button id="refresh" class="button button-quiet"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M19 8a8 8 0 1 0 1 8M19 3v5h-5"/></svg> Refresh</button></div></header>
       <main id="main" tabindex="-1">
-        <div id="sample-banner" class="sample-banner" hidden><span class="sample-label">Sample workspace</span><p>Fictional appointments and garments. Illustrations and test images are not real inventory.</p></div>
+        <div id="sample-banner" class="sample-banner" hidden><span class="sample-label">Sample workspace</span><p>Practice with fictional appointments and garments. Choose a piece, reserve it, then match its item ID when packing.</p></div>
         <div id="message" class="message" hidden tabindex="-1"></div>
         <div id="loading" class="loading"><span class="loading-ring" aria-hidden="true"></span><p>Opening your workspace…</p></div>
         <div id="app" hidden>
           <section class="page-heading"><div><div class="eyebrow" id="appointment-kicker">CURRENT APPOINTMENT</div><h1 id="appointment-name">A choice worth keeping.</h1><p id="appointment-subtitle">Find an item, record the client's choice, and carry it through.</p></div><div class="heading-status"><span class="eyebrow">APPOINTMENT STATUS</span><span id="appointment-status" class="status"></span></div></section>
+          <p id="preview-capability" class="preview-capability" role="status">Checking virtual try-on availability…</p>
           <section class="journey" aria-label="Appointment progress"><ol id="progress"></ol></section>
           <div class="work-grid">
             <section class="rack-section" aria-labelledby="rack-heading">
-              <div class="section-heading"><div><span class="eyebrow">THE SHARED RACK</span><h2 id="rack-heading">Find the right piece.</h2></div><button id="add-item" class="button button-quiet">+ Add item</button></div>
-              <p class="section-intro">Start with the garment. Its details stay with the choice.</p>
+              <div class="section-heading"><div><span class="eyebrow">THE SHARED RACK</span><h2 id="rack-heading">The appointment rack</h2></div><button id="add-item" class="button button-quiet">+ Add item</button></div>
+              <p class="section-intro">Choose a garment to review its condition and record the client’s choice.</p>
               <div class="rack-toolbar"><div class="filter-group" role="group" aria-label="Filter items"><button class="filter active" data-filter="all" aria-pressed="true">All items</button><button class="filter" data-filter="available" aria-pressed="false">Available</button><button class="filter" data-filter="held" aria-pressed="false">On hold</button></div><span id="rack-count" class="muted"></span></div>
               <label class="rack-search" for="item-search"><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="10" cy="10" r="6"/><path d="m15 15 5 5"/></svg><span class="sr-only">Find an item, ID or location</span><input id="item-search" type="search" placeholder="Find an item, ID or location" autocomplete="off"></label>
               <div id="items" class="item-grid"></div>
@@ -40,8 +42,8 @@
             </section>
             <aside id="choice-panel" class="choice-panel" aria-labelledby="choice-heading"></aside>
           </div>
-          <section id="activity" class="activity-section" aria-labelledby="activity-heading"><div class="section-heading"><div><span class="eyebrow">THE HANDOFF HISTORY</span><h2 id="activity-heading">A clear record, at every step.</h2></div><button id="manifest" class="button button-quiet">View packing record <span aria-hidden="true">↗</span></button></div><p class="section-intro">Saved actions for this appointment and the item you're viewing.</p><div id="activity-list" class="activity-list"></div></section>
-          <footer class="page-footer"><span>ClosetRelay</span><span>Care in the choice. Clarity in the handoff.</span><span id="connection-status">Connected locally</span></footer>
+          <section id="activity" class="activity-section" aria-labelledby="activity-heading"><div class="section-heading"><div><span class="eyebrow">THE HANDOFF HISTORY</span><h2 id="activity-heading">Appointment history</h2></div><button id="manifest" class="button button-quiet">View packing record <span aria-hidden="true">↗</span></button></div><p class="section-intro">Saved actions for this appointment and the item you're viewing.</p><div id="activity-list" class="activity-list"></div></section>
+          <footer class="page-footer"><span>ClosetRelay</span><span>Choose · Reserve · Pack</span><span id="connection-status">Connected locally</span></footer>
         </div>
       </main>
     </div>

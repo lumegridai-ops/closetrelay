@@ -29,3 +29,5 @@ dist/
 .sites-runtime/
 .wrangler/
 hosted/assets.generated.mjs
+
+hosted/fixtures.generated.mjs

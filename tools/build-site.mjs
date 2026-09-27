@@ -1,5 +1,6 @@
 import {readFile,writeFile,readdir,mkdir,rm,cp} from 'node:fs/promises';
 import {build} from 'esbuild';
+import {createHash} from 'node:crypto';
 const assets={};
 const mimes={'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.mjs':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8','.svg':'image/svg+xml','.png':'image/png','.woff2':'font/woff2','.ttf':'font/ttf','.txt':'text/plain; charset=utf-8','.py':'text/plain; charset=utf-8'};
 async function add(file,url){
@@ -15,7 +16,13 @@ async function add(file,url){
 }
 async function walk(dir,prefix=''){for(const row of await readdir(dir,{withFileTypes:true})){if(row.isDirectory()){await walk(`${dir}/${row.name}`,`${prefix}/${row.name}`);continue;}if(/Manrope|InstrumentSerif/.test(row.name))continue;await add(`${dir}/${row.name}`,`${prefix}/${row.name}`==='/index.html'?'/':`${prefix}/${row.name}`);}}
 await walk('ui');
-for(const name of ['start.mjs','python-worker.mjs'])await add(`hosted/${name}`,`/hosted/${name}`);
+const fixtureHashes={};
+for(const [key,name] of [['adult','synthetic-adult.png'],['blazer','synthetic-navy-blazer.png']]){
+  await add(`demo-assets/${name}`,`/demo/${name}`);
+  fixtureHashes[key]=createHash('sha256').update(await readFile(`demo-assets/${name}`)).digest('hex');
+}
+await writeFile('hosted/fixtures.generated.mjs',`export default ${JSON.stringify(fixtureHashes)};\n`);
+for(const name of ['start.mjs','python-worker.mjs','try-on.mjs'])await add(`hosted/${name}`,`/hosted/${name}`);
 for(const name of ['__init__.py','demo.py','model.py','server.py'])await add(`backend/${name}`,`/hosted-python/${name}`);
 await add('hosted/bridge.py','/hosted-python/bridge.py');
 await writeFile('hosted/assets.generated.mjs',`export default ${JSON.stringify(assets)};\n`);

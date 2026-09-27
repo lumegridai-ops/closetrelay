@@ -25,7 +25,7 @@ try{
   assert.equal((await api(page,`/api/holds/${held.body.id}/pack`,'POST',body)).body.id,packed.body.id);receipt.checks.push('Another appointment cannot claim the hold; exact-item pack is idempotent.');
   await page.reload();await ready(page);assert.equal((await api(page,'/api/state')).body.appointments[0].handoffs.length,1);receipt.checks.push('Confirmed packing survives a fresh browser engine and reload from hosted storage.');
   const otherContext=await browser.newContext();const other=await otherContext.newPage();await other.goto(base);await ready(other);assert.equal((await api(other,'/api/state')).body.appointments[0].handoffs.length,0);await otherContext.close();receipt.checks.push('Separate browser has isolated fictional inventory and no first visitor handoff.');
-  assert.equal((await api(page,'/api/appointments/demo-appointment-b/previews','POST',{})).status,503);assert.equal((await api(page,'/api/provider/configure','POST',{api_key:'unused-test-sentinel'})).status,503);receipt.checks.push('Provider calls and key configuration really reject; no fake preview is produced.');
+  assert.equal((await api(page,'/api/appointments/demo-appointment-b/previews','POST',{})).status,503);assert.equal((await api(page,'/api/provider/configure','POST',{api_key:'unused-test-sentinel'})).status,503);receipt.checks.push('Arbitrary personal-photo provider calls and visitor key configuration reject; the fixed fictional sample is tested separately.');
   if(process.env.CLOSET_QA_FAULTS==='1'){
     let intercepted=false;
     await page.route('**/workspace/checkpoint',async route=>{if(!intercepted&&route.request().method()==='PUT'){intercepted=true;await route.fetch();await route.abort('failed');}else await route.continue();});

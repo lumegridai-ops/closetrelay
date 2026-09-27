@@ -1,4 +1,5 @@
 import assets from './assets.generated.mjs';
+import {samplePreview} from './sample-preview.mjs';
 const cookieName='__Host-closetrelay';
 const headers={'Cache-Control':'private, no-store','X-Content-Type-Options':'nosniff','Referrer-Policy':'no-referrer',
   'Content-Security-Policy':"default-src 'self'; script-src 'self' https://cdn.jsdelivr.net 'wasm-unsafe-eval'; worker-src 'self' https://cdn.jsdelivr.net/pyodide/v314.0.7/full/; connect-src 'self' https://cdn.jsdelivr.net; font-src 'self'; img-src 'self' data: blob:; style-src 'self' 'unsafe-inline'; object-src 'none'; base-uri 'none'; frame-ancestors 'none'"};
@@ -32,7 +33,11 @@ export default {
   async fetch(request,env,ctx) {
     const url=new URL(request.url),origin=request.headers.get('origin');
     if(origin&&origin!==url.origin)return finish(error(403,'Use the same workspace page.'));
-    if(url.pathname==='/health')return finish(Response.json({product:'ClosetRelay',hosting:'OpenAI Sites',mode:'isolated fictional demo',provider:false}));
+    if(url.pathname==='/health')return finish(Response.json({product:'ClosetRelay',hosting:'OpenAI Sites',mode:'isolated fictional demo',provider:!!env.YOUCAM_API_KEY,provider_scope:'fixed fictional adult and navy blazer'}));
+    if(['/api/sample-preview','/api/sample-preview/image'].includes(url.pathname)){
+      try{return finish(await samplePreview(request,env,ctx));}
+      catch{return finish(error(503,'The virtual try-on record is temporarily unavailable. Your clothing workflow is unchanged.'));}
+    }
     if(Object.hasOwn(assets,url.pathname)&&['GET','HEAD'].includes(request.method)){
       const a=assets[url.pathname],body=request.method==='HEAD'?null:a.encoding==='base64'?Uint8Array.from(atob(a.body),c=>c.charCodeAt(0)):a.body;
       return finish(new Response(body,{headers:{'Content-Type':a.type}}),url.pathname==='/'?(await identity(request)).cookie:undefined);
