@@ -1,0 +1,17 @@
+{
+  "url": "https://closetrelay.dgkv.chatgpt.site",
+  "at": "2026-09-27T04:51:09.352Z",
+  "checks": [
+    "Anonymous browser opens actual Pyodide workflow with Source Sans 3.",
+    "Real UI approval/hold persists; wrong-item packing writes no handoff.",
+    "Changing inventory invalidates the old approval and hold.",
+    "Another appointment cannot claim the hold; exact-item pack is idempotent.",
+    "Confirmed packing survives a fresh browser engine and reload from hosted storage.",
+    "Separate browser has isolated fictional inventory and no first visitor handoff.",
+    "Provider calls and key configuration really reject; no fake preview is produced.",
+    "Phone layout has no horizontal document overflow."
+  ],
+  "errors": [],
+  "initialLoadMs": 3842,
+  "status": "passed"
+}

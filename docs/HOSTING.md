@@ -23,7 +23,7 @@ The existing Python tests remain evidence about the local application. Separate 
 - Independent source review found and helped fix ambiguous D1 commit cleanup, browser engine failure recovery, uncertain save messaging and an unbounded Worker restart loop. Fault doubles tested each failure; these were not presented as production outages.
 - A SameSite=Lax cookie retains access when returning through an external link. Mutation endpoints still reject a foreign Origin. An unknown object path cannot retrieve private snapshots.
 
-Actual public deployment checks are recorded separately after publication. The existing 4K film is a truthful recording of the earlier local UI; it does not depict this hosting implementation or the final font refinement.
+The [public deployment](https://closetrelay.dgkv.chatgpt.site) succeeded. A fresh anonymous browser then passed eight hosted check groups, including real workflow actions, reload persistence, visitor isolation, disabled provider operations and phone layout, with zero uncaught errors. Initial load in that run was 3.84 seconds. [Public receipt](../design/hosted-qa/public/receipt.json). The existing 4K film is a truthful recording of the earlier local UI; it does not depict this hosting implementation or the final font refinement.
 
 ## Reproduce
 

@@ -40,4 +40,8 @@ This prototype was created September 26, before the event's September 29 submiss
 
 ## Remaining submission requirements
 
-Successful real YouCam integration, significant eligible-period updates after the September 29 start, current requirements/declarations, accessible project/testing links, a verified public demo-video link in the required format, and verified Devpost submission status. A local recorded demonstration is prepared; this does not establish video publication or submission. General authorization to submit is recorded separately; it does not supply unknown personal facts.
+Successful real YouCam integration, significant eligible-period updates after the September 29 start, current requirements/declarations, a verified public demo-video link in the required format, and verified Devpost submission status. A local recorded demonstration is prepared; this does not establish video publication or submission. General authorization to submit is recorded separately; it does not supply unknown personal facts.
+
+## Hosted demonstration update
+
+[Public OpenAI Sites demo](https://closetrelay.dgkv.chatgpt.site): real Python workflow computation in the browser, private versioned SQLite snapshots in hosted storage, isolated fictional visitor workspaces and the refined Source Sans 3 UI. Eight public browser check groups passed with no uncaught errors. Photo uploads, key entry and YouCam remain disabled on this demo. This does not fulfill the live-provider or eligible-period requirements. See [hosting evidence](HOSTING.md).

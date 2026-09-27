@@ -16,7 +16,7 @@ The shared rack and appointment sheet keep the garment's ID, location, recorded 
 
 ## Hosted demonstration
 
-A working OpenAI Sites demonstration is prepared with the real Python workflow running in the browser, persistent isolated snapshots, and the revised Source Sans 3 interface. Photo uploads and YouCam are disabled in this fictional hosted demo. See [hosting and its separate checks](docs/HOSTING.md).
+[Open the public ClosetRelay demo](https://closetrelay.dgkv.chatgpt.site). It is hosted on OpenAI Sites with the real Python workflow running in the browser, persistent isolated snapshots, and the revised Source Sans 3 interface. Photo uploads and YouCam are disabled in this fictional hosted demo. See [hosting and its separate checks](docs/HOSTING.md).
 
 ## Try it
 
