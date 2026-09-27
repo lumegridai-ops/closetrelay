@@ -1,0 +1,95 @@
+{
+  "startedAt": "2026-09-27T04:29:38.412Z",
+  "url": "http://127.0.0.1:4323",
+  "readOnly": true,
+  "viewports": [
+    {
+      "width": 1440,
+      "documentWidth": 1440,
+      "overflow": []
+    },
+    {
+      "width": 1280,
+      "documentWidth": 1280,
+      "overflow": []
+    },
+    {
+      "width": 1024,
+      "documentWidth": 1024,
+      "overflow": []
+    },
+    {
+      "width": 768,
+      "documentWidth": 768,
+      "overflow": []
+    },
+    {
+      "width": 390,
+      "documentWidth": 390,
+      "overflow": []
+    },
+    {
+      "width": 320,
+      "documentWidth": 320,
+      "overflow": []
+    },
+    {
+      "kind": "200% root text",
+      "width": 1440,
+      "documentWidth": 1440,
+      "overflow": []
+    },
+    {
+      "kind": "200% root text",
+      "width": 390,
+      "documentWidth": 390,
+      "overflow": []
+    },
+    {
+      "kind": "WCAG text spacing settings",
+      "width": 1440,
+      "documentWidth": 1440,
+      "overflow": []
+    },
+    {
+      "kind": "WCAG text spacing settings",
+      "width": 390,
+      "documentWidth": 390,
+      "overflow": []
+    }
+  ],
+  "checks": [
+    "One local Source Sans 3 font loaded; body/details/actions are 16px; no legacy font requested.",
+    "No horizontal overflow at 1440, 1280, 1024, 768, 390 and 320 CSS pixels.",
+    "Mobile selected-sheet shortcut still focuses the heading.",
+    "200% root text size has no document or element overflow at desktop and phone widths.",
+    "User text-spacing overrides have no document or element overflow at desktop and phone widths.",
+    "System fallback remains readable and approval available when the font request fails.",
+    "No uncaught JavaScript errors."
+  ],
+  "pageErrors": [],
+  "font": {
+    "faces": [
+      {
+        "family": "Source Sans 3",
+        "status": "loaded"
+      }
+    ],
+    "body": "\"Source Sans 3\", system-ui, -apple-system, \"Segoe UI\", sans-serif",
+    "headline": "\"Source Sans 3\", system-ui, -apple-system, \"Segoe UI\", sans-serif",
+    "bodySize": "16px",
+    "detailSize": "16px",
+    "buttonSize": "16px",
+    "fontRequests": [
+      "http://127.0.0.1:4323/fonts/SourceSans3VF-Upright.woff2"
+    ]
+  },
+  "status": "passed",
+  "finishedAt": "2026-09-27T04:29:39.159Z",
+  "sources": {
+    "ui/index.html": "bd3f3431677cc6abc71a99a36200bac295f04b66a2cb6e865dd1f593145f8601",
+    "ui/styles.css": "e8f5d2627bc940de4e2c3c78f19f588b56e8a57fbfb32774ac6294b17f957c2e",
+    "ui/typography.css": "1727d85f84a60516c9a55ae634263c378b4d9a6ded2e00dc443674bad5d3de2d",
+    "ui/app.js": "091aaf1f3b8a62a87e1548c0821def5acf98878f597a34427c6ae0d049b69165"
+  }
+}

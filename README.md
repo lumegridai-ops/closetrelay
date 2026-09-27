@@ -10,9 +10,13 @@ ClosetRelay is a working **local, single-operator prototype** for a remote caree
 
 The new demonstration shows the custom appointment studio from native 3840×2160 browser captures with **Google Gemini synthetic narration** and fictional records. It includes a condition change that invalidates an existing approval and hold before the wrong-item and correct-item packing checks. The release includes the original source media and the final master; the local file is `artifacts/closetrelay-demo-4k.mp4`. The manifest identifies the current cut and its exact duration/hash.
 
-![The custom appointment studio with explicitly fictional records](artifacts/desktop-4k.png)
+![The appointment studio with its refined typography and explicitly fictional records](design/typography/evidence/run-03/initial-1440.png)
 
-The shared rack and appointment sheet keep the garment's ID, location, recorded condition and current decision together. Search, a phone layout, keyboard focus, inline packing errors and a separate optional preview area support that workflow. [Design research and browser evidence](design/DESIGN_REVIEW.md).
+The shared rack and appointment sheet keep the garment's ID, location, recorded condition and current decision together. Search, a phone layout, keyboard focus, inline packing errors and a separate optional preview area support that workflow. [Design research and browser evidence](design/DESIGN_REVIEW.md). The latest [typography refinement](design/typography/README.md) uses one self-hosted Source Sans 3 family and 16px reading text; the existing video predates that font change.
+
+## Hosted demonstration
+
+A working OpenAI Sites demonstration is prepared with the real Python workflow running in the browser, persistent isolated snapshots, and the revised Source Sans 3 interface. Photo uploads and YouCam are disabled in this fictional hosted demo. See [hosting and its separate checks](docs/HOSTING.md).
 
 ## Try it
 

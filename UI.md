@@ -4,6 +4,8 @@ Completed September 26, 2026. This document covers the vanilla browser interface
 
 The subsequent appointment-studio redesign and its current browser evidence are documented in [design/DESIGN_REVIEW.md](design/DESIGN_REVIEW.md). That report supersedes the visual-design description and adds the inline packing-error and stale-window recovery checks below; the original evidence remains preserved.
 
+The latest [typography refinement](design/typography/README.md) replaces the display-serif pairing with Source Sans 3, documents the official guidance used, and records desktop/mobile, enlarged-text and workflow verification.
+
 ## Delivered behavior
 
 The interface uses the actual Python JSON API. There is no simulated success mode, client-side stock ledger, testimonial, invented impact metric, or replacement image presented as a YouCam result.

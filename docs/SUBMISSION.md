@@ -18,7 +18,7 @@ The code includes optional YouCam Clothes V4 integration and explicit consent co
 
 ## How we built it
 
-Python, SQLite, standard-library HTTP and a custom browser interface with no frontend framework. Inventory changes use transactions and version checks. Self-hosted Manrope and Instrument Serif fonts carry their bundled OFL licenses. The provider adapter uses the documented upload/task/poll/download sequence and rejects invalid or stale results. The local API key stays in server memory when entered through the UI.
+Python, SQLite, standard-library HTTP and a custom browser interface with no frontend framework. Inventory changes use transactions and version checks. Self-hosted Source Sans 3 carries its bundled OFL license; the [typography review](../design/typography/README.md) records the subsequent readability refinement. The provider adapter uses the documented upload/task/poll/download sequence and rejects invalid or stale results. The local API key stays in server memory when entered through the UI.
 
 ## Challenges and validation
 

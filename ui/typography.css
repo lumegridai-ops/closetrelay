@@ -1,0 +1,165 @@
+/* One task-focused type family. Layout and workflow styles remain in styles.css. */
+@font-face {
+  font-family: "Source Sans 3";
+  src: url("/fonts/SourceSans3VF-Upright.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 200 900;
+  font-display: swap;
+}
+
+:root {
+  --font-ui: "Source Sans 3", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --type-caption: .75rem;
+  --type-support: .875rem;
+  --type-body: 1rem;
+  --type-section: 1.5rem;
+  --type-sheet: 1.75rem;
+  --type-page: 2.5rem;
+  font-family: var(--font-ui);
+  font-size: 100%;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+body, button, input, textarea, h1, h2, h3, .appointment-avatar, .sidebar-line {
+  font-family: var(--font-ui);
+}
+
+h1, h2, h3 {
+  font-weight: 600;
+  letter-spacing: -.015em;
+  line-height: 1.2;
+}
+
+.page-heading h1 { font-size: var(--type-page); line-height: 1.15; }
+.section-heading h2, .activity-section .section-heading h2,
+.rack-section .section-heading h2 { font-size: var(--type-section); }
+.panel-heading h2, .dialog-top + h2 { font-size: var(--type-sheet); line-height: 1.2; }
+.panel-heading h2 { max-width: 100%; }
+.sidebar-line { font-size: 1.25rem; line-height: 1.35; font-weight: 400; letter-spacing: -.01em; }
+.sidebar-line em { font-style: normal; color: #58604d; }
+.appointment-avatar { font-size: 1rem; font-weight: 600; line-height: 1; }
+.brand { font-size: 1.375rem; font-weight: 700; letter-spacing: -.025em; }
+.brand > span:last-child { min-width: 0; overflow-wrap: anywhere; }
+.brand small { font-size: .75rem; font-weight: 400; letter-spacing: .01em; }
+.appointment-meta strong { font-size: var(--type-support); font-weight: 600; line-height: 1.3; }
+.appointment-meta small { font-size: var(--type-caption); line-height: 1.4; }
+.appointment-button { align-items: center; }
+.appointment-meta { overflow-wrap: anywhere; }
+
+.eyebrow, .page-heading .eyebrow, .section-heading .eyebrow,
+.rack-section .section-heading .eyebrow, .nav-title {
+  font-size: .75rem;
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: .07em;
+}
+.heading-status .eyebrow { font-size: .75rem; }
+.sample-label { font-size: .75rem; font-weight: 600; letter-spacing: .05em; }
+.sample-banner { font-size: var(--type-caption); line-height: 1.5; }
+.breadcrumb, .local-label, .topbar .button, .workspace-info, .workspace-info p,
+.sidebar-bottom { font-size: var(--type-caption); }
+.page-heading p, .section-intro { font-size: var(--type-support); line-height: 1.5; }
+.step-label { font-size: var(--type-support); font-weight: 600; line-height: 1.35; }
+.step-label small { font-size: var(--type-caption); line-height: 1.4; }
+.step-dot { font-size: var(--type-caption); }
+.heading-status .status, .status { font-size: var(--type-support); font-weight: 600; letter-spacing: 0; }
+
+.item-info h3, .chosen-item h3 { font-size: var(--type-body); font-weight: 600; line-height: 1.3; letter-spacing: 0; }
+.item-info p { font-size: var(--type-support); line-height: 1.5; }
+.item-id { font-size: var(--type-caption); font-weight: 600; letter-spacing: .015em; font-variant-numeric: tabular-nums; }
+.item-topline .status { font-size: var(--type-support); }
+.item-bottom { font-size: var(--type-caption); line-height: 1.4; }
+.visual-label { font-size: .75rem; font-weight: 600; letter-spacing: .025em; }
+.rack-footnote { font-size: var(--type-caption); line-height: 1.5; }
+.rack-toolbar > .muted { font-size: var(--type-caption); }
+.filter, .section-heading > .button { font-size: var(--type-support); font-weight: 600; }
+.rack-search input { font-size: var(--type-support); line-height: 1.5; }
+.rack-search input::placeholder { font-size: inherit; }
+
+.chosen-item p, .detail-list, .condition-note,
+.approval-state, .approval-state strong { font-size: var(--type-body); line-height: 1.5; }
+.chosen-item p { font-variant-numeric: tabular-nums; }
+.detail-list { grid-template-columns: 5rem minmax(0, 1fr); }
+.detail-list dd, .condition-note strong, .approval-state strong { font-weight: 600; }
+.condition-note strong { font-size: var(--type-support); }
+.panel-role-number { font-size: var(--type-caption); font-variant-numeric: tabular-nums; }
+.button, .button-primary, .panel-body > .button-primary,
+.pack-form > .button-primary { font-size: var(--type-body); font-weight: 600; line-height: 1.35; }
+.panel-actions .button, .preview-section > .button { font-size: var(--type-support); }
+.action-note, .compact-note, .pack-form .compact-note { font-size: var(--type-support); line-height: 1.5; }
+.pack-form label { font-size: var(--type-body); font-weight: 600; }
+.pack-form input { font-size: var(--type-body); line-height: 1.5; letter-spacing: .015em; font-variant-numeric: tabular-nums; }
+.field-error, .pack-form .field-error { font-size: var(--type-body); line-height: 1.5; }
+.field-error p, .pack-form .field-error p { font-size: var(--type-support); line-height: 1.5; }
+.preview-heading h3 { font-size: var(--type-body); font-weight: 600; }
+.optional-tag { font-size: var(--type-caption); }
+.preview-section > p, .preview-details, .preview-details summary { font-size: var(--type-support); line-height: 1.5; }
+.inspect-details, .inspect-details summary, .inspect-details code { font-size: var(--type-caption); line-height: 1.5; }
+.inspect-details code { overflow-wrap: anywhere; }
+
+.activity-content, .activity-content strong { font-size: var(--type-support); }
+.activity-content strong { font-weight: 600; }
+.activity-content small, .activity-content details, .activity-index, .activity-empty,
+.page-footer, .activity-content summary { font-size: var(--type-caption); line-height: 1.5; }
+.page-footer > span:first-child { font-size: var(--type-body); font-weight: 600; letter-spacing: -.02em; }
+.message, .message strong, .message p { font-size: var(--type-support); line-height: 1.5; }
+.message summary { font-size: var(--type-caption); }
+#dialog-description, dialog > .muted, .field > label,
+.field .checkbox-label, #record-content { font-size: var(--type-body); line-height: 1.5; }
+.field > label { font-weight: 600; }
+.field input:not([type=checkbox]), .field textarea { font-size: var(--type-body); line-height: 1.5; }
+.field small { font-size: var(--type-support); line-height: 1.5; }
+.dialog-actions .button, .dialog-actions .button-primary { font-size: var(--type-body); }
+.record-code, pre { font-size: var(--type-caption); }
+
+@media (max-width: 1200px) {
+  .brand { font-size: 1.125rem; }
+  .brand small { font-size: .75rem; }
+  .appointment-meta small { font-size: .75rem; }
+}
+
+@media (max-width: 980px) and (min-width: 761px) {
+  .brand { font-size: 1rem; }
+  .brand small { font-size: .5625rem; }
+  .appointment-meta strong { font-size: .75rem; }
+  .appointment-meta small { font-size: .75rem; }
+  .appointment-avatar { font-size: .8125rem; }
+}
+
+@media (max-width: 760px) {
+  .brand { font-size: 1.375rem; }
+  .brand small { font-size: .75rem; }
+  .appointment-meta strong { font-size: var(--type-support); }
+  .appointment-meta small { font-size: var(--type-caption); }
+  .appointment-button { min-width: 10rem; flex: 1 0 10rem; }
+}
+
+@media (max-width: 640px) {
+  :root { --type-page: 2rem; --type-sheet: 1.75rem; }
+  .page-heading { flex-wrap: wrap; align-items: flex-start; }
+  .page-heading > div:first-child { min-width: 0; }
+  .page-heading p { max-width: 29ch; font-size: var(--type-support); }
+  .heading-status { max-width: none; }
+  .step-label { font-size: .75rem; }
+  .step-label small { font-size: .75rem; max-width: none; }
+  .step-dot { font-size: .75rem; }
+  .item-topline { gap: 5px; }
+  .item-id { font-size: .75rem; }
+  .item-bottom { font-size: .75rem; }
+  .visual-label { font-size: .5625rem; }
+  .rack-search input { font-size: var(--type-body); }
+  .filter { padding-left: 10px; padding-right: 10px; }
+  .item-info h3 { font-size: .9375rem; }
+  .mobile-selection > div > span { font-size: .75rem; font-weight: 600; }
+  .mobile-selection strong { font-size: var(--type-support); line-height: 1.4; }
+  .mobile-selection .button { font-size: var(--type-support); }
+  .dialog-actions { flex-wrap: wrap; }
+  .topbar, .rack-toolbar, .filter-group { flex-wrap: wrap; }
+  .filter-group { max-width: 100%; }
+  .journey ol { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .journey li { min-width: 0; flex-wrap: wrap; }
+  .step-label { min-width: 0; overflow-wrap: anywhere; }
+  .sample-banner { flex-wrap: wrap; }
+  .sample-banner p { min-width: 0; flex: 1 1 12rem; overflow-wrap: anywhere; }
+}

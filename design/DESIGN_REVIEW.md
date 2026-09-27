@@ -2,6 +2,8 @@
 
 Completed September 26, 2026 in the operator's local timezone. Browser evidence includes its actual UTC timestamps. This report supersedes the presentation section of `UI.md`; provider and backend readiness are unchanged.
 
+**Typography follow-up:** The user subsequently requested a more natural font. The live UI now uses Source Sans 3 with larger reading text. [Research, changes, before/after screens and fresh verification](typography/README.md). The original design decisions and evidence below are preserved as history.
+
 ## What changed
 
 The interface now looks and behaves like a shared appointment sheet beside a clothing rack. It uses warm paper surfaces, charcoal actions, a restrained saffron selection accent, and self-hosted Manrope and Instrument Serif. Garments receive substantially more visual space. The composition has a small appointment navigation, a flat three-step handoff strip, a browsable rack, and an appointment sheet with one main action for the current state. It does not add charts, invented activity metrics, testimonials, or a generic admin dashboard.

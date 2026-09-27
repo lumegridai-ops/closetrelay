@@ -1,0 +1,114 @@
+{
+  "startedAt": "2026-09-27T04:27:52.023Z",
+  "url": "http://127.0.0.1:4323",
+  "readOnly": true,
+  "viewports": [
+    {
+      "width": 1440,
+      "documentWidth": 1440,
+      "overflow": []
+    },
+    {
+      "width": 1280,
+      "documentWidth": 1280,
+      "overflow": []
+    },
+    {
+      "width": 1024,
+      "documentWidth": 1024,
+      "overflow": []
+    },
+    {
+      "width": 768,
+      "documentWidth": 768,
+      "overflow": []
+    },
+    {
+      "width": 390,
+      "documentWidth": 390,
+      "overflow": []
+    },
+    {
+      "width": 320,
+      "documentWidth": 320,
+      "overflow": []
+    },
+    {
+      "kind": "200% root text",
+      "width": 1440,
+      "documentWidth": 1440,
+      "overflow": []
+    },
+    {
+      "kind": "200% root text",
+      "width": 390,
+      "documentWidth": 458,
+      "overflow": [
+        {
+          "tag": "DIV",
+          "cls": "topbar-actions",
+          "text": "Local workspace Refresh"
+        },
+        {
+          "tag": "BUTTON",
+          "cls": "button button-quiet",
+          "text": "Refresh"
+        },
+        {
+          "tag": "LI",
+          "cls": "",
+          "text": "3Exact-item packingConfirm the tag"
+        },
+        {
+          "tag": "DIV",
+          "cls": "filter-group",
+          "text": "All itemsAvailableOn hold"
+        },
+        {
+          "tag": "BUTTON",
+          "cls": "filter",
+          "text": "On hold"
+        },
+        {
+          "tag": "SPAN",
+          "cls": "muted",
+          "text": "4 items"
+        }
+      ]
+    }
+  ],
+  "checks": [
+    "One local Source Sans 3 font loaded; body/details/actions are 16px; no legacy font requested.",
+    "No horizontal overflow at 1440, 1280, 1024, 768, 390 and 320 CSS pixels.",
+    "Mobile selected-sheet shortcut still focuses the heading."
+  ],
+  "pageErrors": [],
+  "font": {
+    "faces": [
+      {
+        "family": "Source Sans 3",
+        "status": "loaded"
+      }
+    ],
+    "body": "\"Source Sans 3\", system-ui, -apple-system, \"Segoe UI\", sans-serif",
+    "headline": "\"Source Sans 3\", system-ui, -apple-system, \"Segoe UI\", sans-serif",
+    "bodySize": "16px",
+    "detailSize": "16px",
+    "buttonSize": "16px",
+    "fontRequests": [
+      "http://127.0.0.1:4323/fonts/SourceSans3VF-Upright.woff2"
+    ]
+  },
+  "status": "failed",
+  "error": {
+    "message": "390px text resize overflow\n\n458 !== 390\n",
+    "stack": "AssertionError [ERR_ASSERTION]: 390px text resize overflow\n\n458 !== 390\n\n    at file:///Users/matt/hackathon/closetrelay/design/typography/verify-type.mjs:33:137"
+  },
+  "finishedAt": "2026-09-27T04:27:52.638Z",
+  "sources": {
+    "ui/index.html": "bd3f3431677cc6abc71a99a36200bac295f04b66a2cb6e865dd1f593145f8601",
+    "ui/styles.css": "e8f5d2627bc940de4e2c3c78f19f588b56e8a57fbfb32774ac6294b17f957c2e",
+    "ui/typography.css": "82eed60635eb1951279917e7821577429e3eb46f12a9bda06bc5ea4932ada646",
+    "ui/app.js": "091aaf1f3b8a62a87e1548c0821def5acf98878f597a34427c6ae0d049b69165"
+  }
+}

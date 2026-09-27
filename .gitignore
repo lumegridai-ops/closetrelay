@@ -24,3 +24,8 @@ artifacts/widescreen-recording/review/
 artifacts/widescreen-recording/final-edit/*.png
 
 artifacts/presentation-source.zip
+
+dist/
+.sites-runtime/
+.wrangler/
+hosted/assets.generated.mjs

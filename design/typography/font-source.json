@@ -1,0 +1,26 @@
+{
+  "retrieved_at": "2026-09-27T04:24:50.086959+00:00",
+  "family": "Source Sans 3",
+  "publisher": "Adobe",
+  "weight_range": [
+    200,
+    900
+  ],
+  "sources": [
+    {
+      "source": "https://raw.githubusercontent.com/adobe-fonts/source-sans/release/WOFF2/VF/SourceSans3VF-Upright.ttf.woff2",
+      "local": "ui/fonts/SourceSans3VF-Upright.woff2",
+      "bytes": 170188,
+      "sha256": "5f16566f7a40d39b339ad26be151fa5a1ab1f0c2574c7a2e619765584a1acbd8"
+    },
+    {
+      "source": "https://raw.githubusercontent.com/adobe-fonts/source-sans/release/LICENSE.md",
+      "local": "ui/fonts/OFL-SourceSans3.txt",
+      "bytes": 4485,
+      "sha256": "f9e57d28452ab6162c7fc0d248b5a5e81bf64676a6950d56b2e137c1253f79e8",
+      "original_source_sha256": "56af9b9c6715597e458284a474dc118a50a4150e9d547c70f7b4a33c3e6a9328",
+      "original_source_bytes": 4486,
+      "normalization": "Trailing line whitespace removed; license text unchanged."
+    }
+  ]
+}

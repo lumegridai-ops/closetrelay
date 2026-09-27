@@ -1,0 +1,18 @@
+{
+  "url": "http://127.0.0.1:4327",
+  "at": "2026-09-27T04:47:25.612Z",
+  "checks": [
+    "Anonymous browser opens actual Pyodide workflow with Source Sans 3.",
+    "Real UI approval/hold persists; wrong-item packing writes no handoff.",
+    "Changing inventory invalidates the old approval and hold.",
+    "Another appointment cannot claim the hold; exact-item pack is idempotent.",
+    "Confirmed packing survives a fresh browser engine and reload from hosted storage.",
+    "Separate browser has isolated fictional inventory and no first visitor handoff.",
+    "Provider calls and key configuration really reject; no fake preview is produced.",
+    "Injected lost PUT response reports uncertainty and reloads the committed record once.",
+    "Phone layout has no horizontal document overflow."
+  ],
+  "errors": [],
+  "initialLoadMs": 2341,
+  "status": "passed"
+}

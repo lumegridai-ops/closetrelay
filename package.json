@@ -4,6 +4,16 @@
   "private": true,
   "type": "module",
   "description": "Optional local browser recording tools; the ClosetRelay application runs with Python only",
-  "scripts": {"record:demo": "node tools/record-demo.mjs"},
-  "devDependencies": {"playwright": "1.63.0"}
+  "scripts": {
+    "record:demo": "node tools/record-demo.mjs",
+    "build": "node tools/build-site.mjs",
+    "db:generate": "drizzle-kit generate"
+  },
+  "devDependencies": {
+    "drizzle-kit": "^0.31.11",
+    "drizzle-orm": "^0.45.3",
+    "esbuild": "^0.28.2",
+    "miniflare": "^5.20260925.0-alpha",
+    "playwright": "1.63.0"
+  }
 }
