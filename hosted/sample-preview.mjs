@@ -15,7 +15,7 @@ async function readBody(response,limit){
   finally{await reader.cancel().catch(()=>{});}
   const bytes=new Uint8Array(length);let offset=0;for(const part of parts){bytes.set(part,offset);offset+=part.length;}return bytes;
 }
-async function json(response){const body=JSON.parse(new TextDecoder().decode(await readBody(response,65536)));if(!response.ok)throw new Error(`provider_http_${response.status}`);return body;}
+async function json(response){if(!response.ok){await response.body?.cancel();throw new Error(`provider_http_${response.status}`);}return JSON.parse(new TextDecoder().decode(await readBody(response,65536)));}
 const read=env=>env.DB.prepare('SELECT * FROM closet_sample_preview WHERE id=?').bind(SLOT).first();
 function view(row,configured){
   return {configured,fixture:SLOT,scope:'Fixed fictional adult and navy blazer only',status:row?.status??'ready',
@@ -30,9 +30,10 @@ async function create(env,fetchImpl,now){
   try{
     const body=await json(await fetchImpl(API,{method:'POST',headers:{'Content-Type':'application/json',Authorization:`Bearer ${env.YOUCAM_API_KEY}`},
       body:JSON.stringify({src_file_url:SITE+'/demo/synthetic-adult.png',ref_file_url:SITE+'/demo/synthetic-navy-blazer.png',garment_category:'outer',change_shoes:false,filter_multi_person:'strict'}),
-      redirect:'error',signal:AbortSignal.timeout(25000)}));
-    receivedId=body?.data?.task_id;
-    if(typeof receivedId!=='string'||!/^[A-Za-z0-9_-]{1,512}$/.test(receivedId))throw new Error('invalid_task_response');
+      redirect:'manual',signal:AbortSignal.timeout(25000)}));
+    const candidate=body?.data?.task_id;
+    if(typeof candidate!=='string'||!/^[A-Za-z0-9_-]{1,512}$/.test(candidate))throw new Error('invalid_task_response');
+    receivedId=candidate;
     // Preserve the actual task before updating D1, so a lost save response can recover.
     await env.FILES.put(RECEIPT,JSON.stringify({task_id:receivedId,source_hash:fixture.adult,reference_hash:fixture.blazer}),{httpMetadata:{contentType:'application/json'}});
     await env.DB.prepare("UPDATE closet_sample_preview SET status=?,task_id=?,updated_at=?,next_poll_at=? WHERE id=? AND status IN ('creating','creation_uncertain')").bind('processing',receivedId,now(),now()+10000,SLOT).run();
@@ -46,14 +47,14 @@ async function create(env,fetchImpl,now){
 async function poll(env,row,fetchImpl,now,leaseToken){
   const fail=(code,terminal=false)=>env.DB.prepare('UPDATE closet_sample_preview SET status=?,error_code=?,updated_at=? WHERE id=? AND status=? AND next_poll_at=?').bind(terminal?'failed':'processing',code,now(),SLOT,'processing',leaseToken).run();
   try{
-    const payload=await json(await fetchImpl(`${API}/${encodeURIComponent(row.task_id)}`,{headers:{Authorization:`Bearer ${env.YOUCAM_API_KEY}`},redirect:'error',signal:AbortSignal.timeout(25000)}));
+    const payload=await json(await fetchImpl(`${API}/${encodeURIComponent(row.task_id)}`,{headers:{Authorization:`Bearer ${env.YOUCAM_API_KEY}`,'Content-Type':'application/json'},redirect:'manual',signal:AbortSignal.timeout(25000)}));
     const data=payload?.data;
     if(['error','failed'].includes(data?.task_status)){await fail('provider_generation_failed',true);return;}
     if(['running','pending','queued'].includes(data?.task_status))return;
     if(data?.task_status!=='success')throw new Error('invalid_status_response');
     const url=new URL(data.results?.url);
     if(url.protocol!=='https:'||url.hostname!=='yce-us.s3-accelerate.amazonaws.com'||url.port||url.username||url.password)throw new Error('unexpected_result_host');
-    const response=await fetchImpl(url.href,{redirect:'error',signal:AbortSignal.timeout(25000)});
+    const response=await fetchImpl(url.href,{redirect:'manual',signal:AbortSignal.timeout(25000)});
     if(!response.ok)throw new Error('result_unavailable');
     const bytes=await readBody(response,8*1024*1024);
     const contentType=imageType(bytes);

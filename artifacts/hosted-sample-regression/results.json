@@ -1,8 +1,8 @@
 {
-  "at": "2026-09-27T05:29:23.806Z",
+  "at": "2026-09-27T05:40:09.672Z",
   "kind": "Independent source-copy test with actual SQLite SQL and explicitly fake YouCam/R2; no live request",
   "source_path": "/Users/matt/hackathon/closetrelay/hosted/sample-preview.mjs",
-  "source_sha256": "6c09a352c9cb19515b5820cf063532841e16a8170a78bfcf1b9ccd246bbad0ea",
+  "source_sha256": "d6ccc83a7c769e4f55dd203e63dc7de200ca69925459921c98714ec93c1b23f7",
   "fixture_hashes": {
     "adult": "3755f0ee4729280203772be8c93c98ffd3230e54df9db7699485a03067fb7f85",
     "blazer": "792ce5cd0be8a029b92d2db4adcb1ead78aa77557bde88a08384ae3ced905a62"
