@@ -1,0 +1,9 @@
+{
+  "checked_at": "2026-09-27T05:46:00Z",
+  "initial_free_units": 40,
+  "remaining_free_units": 38,
+  "actual_clothes_v4_generations": 1,
+  "units_used": 2,
+  "paid_credits_purchased": 0,
+  "first_failure": "Runtime rejected redirect:error before network; exact failed row retained and manually recovered once."
+}

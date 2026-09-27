@@ -1,0 +1,9 @@
+{
+  "decoder": "FFmpeg full decode returned exit0, independently decoded in desktop and phone Chrome",
+  "format": "JPEG",
+  "width": 1024,
+  "height": 1536,
+  "bytes": 161311,
+  "sha256": "884f30f7b47b1523e2a5326e5638678ceab5b90d38067f002699635432fe9007",
+  "matches_provider_record": true
+}

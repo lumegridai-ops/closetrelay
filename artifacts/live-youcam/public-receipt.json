@@ -1,0 +1,37 @@
+{
+  "at": "2026-09-27T05:45:32.313Z",
+  "url": "https://closetrelay.dgkv.chatgpt.site",
+  "checks": [
+    {
+      "name": "desktop actual provider image decodes; no regeneration; no horizontal overflow",
+      "dimensions": {
+        "width": 1024,
+        "height": 1536
+      },
+      "task": "vco3ePfajl_eQZBw_4GyB-Xft8OXO1Ogmxt_3d5ShuSJWrGdhB6_gYvF-K8oZ_MK"
+    },
+    {
+      "name": "desktop transient status error remains visible; recovery and Escape focus pass"
+    },
+    {
+      "name": "desktop saved result survives reload"
+    },
+    {
+      "name": "phone actual provider image decodes; no regeneration; no horizontal overflow",
+      "dimensions": {
+        "width": 1024,
+        "height": 1536
+      },
+      "task": "vco3ePfajl_eQZBw_4GyB-Xft8OXO1Ogmxt_3d5ShuSJWrGdhB6_gYvF-K8oZ_MK"
+    },
+    {
+      "name": "phone transient status error remains visible; recovery and Escape focus pass"
+    },
+    {
+      "name": "phone saved result survives reload"
+    }
+  ],
+  "errors": [],
+  "generationPosts": 0,
+  "status": "passed"
+}

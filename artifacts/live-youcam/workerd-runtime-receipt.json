@@ -1,0 +1,377 @@
+{
+  "at": "2026-09-27T05:51:46.499Z",
+  "kind": "Actual workerd and real local D1/R2; native fetch to controlled loopback HTTP fake only; no live YouCam calls",
+  "hashes": {
+    "sample-preview.mjs": "d6ccc83a7c769e4f55dd203e63dc7de200ca69925459921c98714ec93c1b23f7",
+    "image-container.mjs": "d4f5fa6da0a253c1267f81f97de0e518256c624523ae5e73eae5d51255a72744",
+    "drizzle/0000_same_adam_destine.sql": "84a8aa02bb47f68fdb4d1d8e86f20ebc609b26c251f64a997f0f3e97d4299ec3",
+    "drizzle/0001_parallel_spectrum.sql": "5200af74568af2bfdd455dc7be5d575f70e273675bde4ea9cf5ec66af95654ab"
+  },
+  "fixtureHashes": {
+    "adult": "3755f0ee4729280203772be8c93c98ffd3230e54df9db7699485a03067fb7f85",
+    "blazer": "792ce5cd0be8a029b92d2db4adcb1ead78aa77557bde88a08384ae3ced905a62"
+  },
+  "sourceStable": true,
+  "cases": [
+    {
+      "mode": "valid",
+      "status": "passed",
+      "runtime": {
+        "timeout": "function",
+        "reader": "function",
+        "waitUntil": "function"
+      },
+      "httpStatus": 202,
+      "initialStatus": "creating",
+      "finalRow": {
+        "id": "navy-adult-v1",
+        "status": "succeeded",
+        "source_hash": "3755f0ee4729280203772be8c93c98ffd3230e54df9db7699485a03067fb7f85",
+        "reference_hash": "792ce5cd0be8a029b92d2db4adcb1ead78aa77557bde88a08384ae3ced905a62",
+        "task_id": "FAKE-WORKERD-TASK",
+        "result_key": "youcam-sample/navy-adult-v1-output/3755f0ee4729280203772be8c93c98ffd3230e54df9db7699485a03067fb7f85",
+        "result_hash": "3755f0ee4729280203772be8c93c98ffd3230e54df9db7699485a03067fb7f85",
+        "error_code": null,
+        "created_at": 1790488304769,
+        "updated_at": 1790488304853,
+        "next_poll_at": 1790488369810
+      },
+      "receiptPresent": true,
+      "output": {
+        "bytes": 1891454,
+        "sha256": "3755f0ee4729280203772be8c93c98ffd3230e54df9db7699485a03067fb7f85",
+        "mime": "image/png"
+      },
+      "elapsedMs": 330
+    },
+    {
+      "mode": "json400",
+      "status": "passed",
+      "runtime": {
+        "timeout": "function",
+        "reader": "function",
+        "waitUntil": "function"
+      },
+      "httpStatus": 202,
+      "initialStatus": "creating",
+      "finalRow": {
+        "id": "navy-adult-v1",
+        "status": "failed",
+        "source_hash": "3755f0ee4729280203772be8c93c98ffd3230e54df9db7699485a03067fb7f85",
+        "reference_hash": "792ce5cd0be8a029b92d2db4adcb1ead78aa77557bde88a08384ae3ced905a62",
+        "task_id": null,
+        "result_key": null,
+        "result_hash": null,
+        "error_code": "provider_http_400",
+        "created_at": 1790488305068,
+        "updated_at": 1790488305071,
+        "next_poll_at": 1790488315068
+      },
+      "receiptPresent": false,
+      "elapsedMs": 193
+    },
+    {
+      "mode": "html403",
+      "status": "passed",
+      "runtime": {
+        "timeout": "function",
+        "reader": "function",
+        "waitUntil": "function"
+      },
+      "httpStatus": 202,
+      "initialStatus": "creating",
+      "finalRow": {
+        "id": "navy-adult-v1",
+        "status": "failed",
+        "source_hash": "3755f0ee4729280203772be8c93c98ffd3230e54df9db7699485a03067fb7f85",
+        "reference_hash": "792ce5cd0be8a029b92d2db4adcb1ead78aa77557bde88a08384ae3ced905a62",
+        "task_id": null,
+        "result_key": null,
+        "result_hash": null,
+        "error_code": "provider_http_403",
+        "created_at": 1790488305266,
+        "updated_at": 1790488305277,
+        "next_poll_at": 1790488315266
+      },
+      "receiptPresent": false,
+      "elapsedMs": 205
+    },
+    {
+      "mode": "malformed",
+      "status": "passed",
+      "runtime": {
+        "timeout": "function",
+        "reader": "function",
+        "waitUntil": "function"
+      },
+      "httpStatus": 202,
+      "initialStatus": "creating",
+      "finalRow": {
+        "id": "navy-adult-v1",
+        "status": "creation_uncertain",
+        "source_hash": "3755f0ee4729280203772be8c93c98ffd3230e54df9db7699485a03067fb7f85",
+        "reference_hash": "792ce5cd0be8a029b92d2db4adcb1ead78aa77557bde88a08384ae3ced905a62",
+        "task_id": null,
+        "result_key": null,
+        "result_hash": null,
+        "error_code": "creation_confirmation_lost",
+        "created_at": 1790488305467,
+        "updated_at": 1790488305469,
+        "next_poll_at": 1790488315467
+      },
+      "receiptPresent": false,
+      "elapsedMs": 182
+    },
+    {
+      "mode": "wrongshape",
+      "status": "passed",
+      "runtime": {
+        "timeout": "function",
+        "reader": "function",
+        "waitUntil": "function"
+      },
+      "httpStatus": 202,
+      "initialStatus": "creating",
+      "finalRow": {
+        "id": "navy-adult-v1",
+        "status": "creation_uncertain",
+        "source_hash": "3755f0ee4729280203772be8c93c98ffd3230e54df9db7699485a03067fb7f85",
+        "reference_hash": "792ce5cd0be8a029b92d2db4adcb1ead78aa77557bde88a08384ae3ced905a62",
+        "task_id": null,
+        "result_key": null,
+        "result_hash": null,
+        "error_code": "creation_confirmation_lost",
+        "created_at": 1790488305648,
+        "updated_at": 1790488305650,
+        "next_poll_at": 1790488315648
+      },
+      "receiptPresent": false,
+      "elapsedMs": 181
+    },
+    {
+      "mode": "redirect",
+      "status": "passed",
+      "runtime": {
+        "timeout": "function",
+        "reader": "function",
+        "waitUntil": "function"
+      },
+      "httpStatus": 202,
+      "initialStatus": "creating",
+      "finalRow": {
+        "id": "navy-adult-v1",
+        "status": "creation_uncertain",
+        "source_hash": "3755f0ee4729280203772be8c93c98ffd3230e54df9db7699485a03067fb7f85",
+        "reference_hash": "792ce5cd0be8a029b92d2db4adcb1ead78aa77557bde88a08384ae3ced905a62",
+        "task_id": null,
+        "result_key": null,
+        "result_hash": null,
+        "error_code": "provider_http_302",
+        "created_at": 1790488305833,
+        "updated_at": 1790488305835,
+        "next_poll_at": 1790488315833
+      },
+      "receiptPresent": false,
+      "elapsedMs": 183
+    },
+    {
+      "mode": "reset",
+      "status": "passed",
+      "runtime": {
+        "timeout": "function",
+        "reader": "function",
+        "waitUntil": "function"
+      },
+      "httpStatus": 202,
+      "initialStatus": "creating",
+      "finalRow": {
+        "id": "navy-adult-v1",
+        "status": "creation_uncertain",
+        "source_hash": "3755f0ee4729280203772be8c93c98ffd3230e54df9db7699485a03067fb7f85",
+        "reference_hash": "792ce5cd0be8a029b92d2db4adcb1ead78aa77557bde88a08384ae3ced905a62",
+        "task_id": null,
+        "result_key": null,
+        "result_hash": null,
+        "error_code": "creation_confirmation_lost",
+        "created_at": 1790488306022,
+        "updated_at": 1790488306024,
+        "next_poll_at": 1790488316022
+      },
+      "receiptPresent": false,
+      "elapsedMs": 188
+    },
+    {
+      "mode": "status-redirect",
+      "status": "passed",
+      "runtime": {
+        "timeout": "function",
+        "reader": "function",
+        "waitUntil": "function"
+      },
+      "httpStatus": 202,
+      "initialStatus": "creating",
+      "finalRow": {
+        "id": "navy-adult-v1",
+        "status": "processing",
+        "source_hash": "3755f0ee4729280203772be8c93c98ffd3230e54df9db7699485a03067fb7f85",
+        "reference_hash": "792ce5cd0be8a029b92d2db4adcb1ead78aa77557bde88a08384ae3ced905a62",
+        "task_id": "FAKE-WORKERD-TASK",
+        "result_key": null,
+        "result_hash": null,
+        "error_code": "provider_read_unavailable",
+        "created_at": 1790488306206,
+        "updated_at": 1790488306241,
+        "next_poll_at": 1790488316242
+      },
+      "receiptPresent": true,
+      "elapsedMs": 204
+    },
+    {
+      "mode": "image-redirect",
+      "status": "passed",
+      "runtime": {
+        "timeout": "function",
+        "reader": "function",
+        "waitUntil": "function"
+      },
+      "httpStatus": 202,
+      "initialStatus": "creating",
+      "finalRow": {
+        "id": "navy-adult-v1",
+        "status": "processing",
+        "source_hash": "3755f0ee4729280203772be8c93c98ffd3230e54df9db7699485a03067fb7f85",
+        "reference_hash": "792ce5cd0be8a029b92d2db4adcb1ead78aa77557bde88a08384ae3ced905a62",
+        "task_id": "FAKE-WORKERD-TASK",
+        "result_key": null,
+        "result_hash": null,
+        "error_code": "provider_read_unavailable",
+        "created_at": 1790488306419,
+        "updated_at": 1790488306459,
+        "next_poll_at": 1790488316459
+      },
+      "receiptPresent": true,
+      "elapsedMs": 238
+    }
+  ],
+  "calls": [
+    {
+      "mode": "valid",
+      "stage": "create",
+      "method": "POST",
+      "requestBytes": 246,
+      "hasAuthorization": true,
+      "hasJsonContentType": true
+    },
+    {
+      "mode": "valid",
+      "stage": "poll",
+      "method": "GET",
+      "requestBytes": 0,
+      "hasAuthorization": true,
+      "hasJsonContentType": true
+    },
+    {
+      "mode": "valid",
+      "stage": "image",
+      "method": "GET",
+      "requestBytes": 0,
+      "hasAuthorization": false,
+      "hasJsonContentType": false
+    },
+    {
+      "mode": "json400",
+      "stage": "create",
+      "method": "POST",
+      "requestBytes": 246,
+      "hasAuthorization": true,
+      "hasJsonContentType": true
+    },
+    {
+      "mode": "html403",
+      "stage": "create",
+      "method": "POST",
+      "requestBytes": 246,
+      "hasAuthorization": true,
+      "hasJsonContentType": true
+    },
+    {
+      "mode": "malformed",
+      "stage": "create",
+      "method": "POST",
+      "requestBytes": 246,
+      "hasAuthorization": true,
+      "hasJsonContentType": true
+    },
+    {
+      "mode": "wrongshape",
+      "stage": "create",
+      "method": "POST",
+      "requestBytes": 246,
+      "hasAuthorization": true,
+      "hasJsonContentType": true
+    },
+    {
+      "mode": "redirect",
+      "stage": "create",
+      "method": "POST",
+      "requestBytes": 246,
+      "hasAuthorization": true,
+      "hasJsonContentType": true
+    },
+    {
+      "mode": "reset",
+      "stage": "create",
+      "method": "POST",
+      "requestBytes": 246,
+      "hasAuthorization": true,
+      "hasJsonContentType": true
+    },
+    {
+      "mode": "status-redirect",
+      "stage": "create",
+      "method": "POST",
+      "requestBytes": 246,
+      "hasAuthorization": true,
+      "hasJsonContentType": true
+    },
+    {
+      "mode": "status-redirect",
+      "stage": "poll",
+      "method": "GET",
+      "requestBytes": 0,
+      "hasAuthorization": true,
+      "hasJsonContentType": true
+    },
+    {
+      "mode": "image-redirect",
+      "stage": "create",
+      "method": "POST",
+      "requestBytes": 246,
+      "hasAuthorization": true,
+      "hasJsonContentType": true
+    },
+    {
+      "mode": "image-redirect",
+      "stage": "poll",
+      "method": "GET",
+      "requestBytes": 0,
+      "hasAuthorization": true,
+      "hasJsonContentType": true
+    },
+    {
+      "mode": "image-redirect",
+      "stage": "image",
+      "method": "GET",
+      "requestBytes": 0,
+      "hasAuthorization": false,
+      "hasJsonContentType": false
+    }
+  ],
+  "serverErrors": [],
+  "forbiddenRedirectTargetRequests": 0,
+  "limits": [
+    "The fake image is an existing synthetic input, not a YouCam-generated output.",
+    "No live authentication, credits, provider model quality or production deployment is tested.",
+    "The service module is exercised; the top-level hosted routing/UI and production D1/R2 are separate checks."
+  ]
+}

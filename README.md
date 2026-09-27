@@ -4,13 +4,13 @@ Carry one recorded clothing choice through an exclusive hold and an exact-item p
 
 ClosetRelay is a working **local, single-operator prototype** for a remote career-clothing appointment workflow. It joins a specific garment card, the recorded client choice, inventory reservation, and packing evidence. It refuses silent substitutions and stale approvals. The interface can record consent and upload images for an optional YouCam Clothes V4 appearance preview.
 
-**Current provider status: real integration code is implemented, but a successful live YouCam request has not been verified.** A missing key disables previews. Offline tests use explicit test doubles; their results are not provider inference. The included portrait and jacket are clearly disclosed synthetic test inputs.
+**Current provider status: the public fixed-image sample completed a real YouCam Clothes V4 task on September 27, 2026 UTC.** Its actual 1024×1536 output is saved and clearly labeled; repeat visits do not generate again. The two inputs are disclosed fictional images. This verifies the hosted fixed-sample path; the local arbitrary-photo adapter remains separately offline-tested. [Live evidence and scope](docs/HOSTED_TRY_ON.md).
 
 [4K demo — release download](https://github.com/lumegridai-ops/closetrelay/releases/download/v0.2.0-preperiod/closetrelay-demo-4k.mp4) · [Transcript / captions](artifacts/closetrelay-demo-4k.srt) · [Recording manifest](artifacts/widescreen-demo-manifest.json)
 
 The new demonstration shows the custom appointment studio from native 3840×2160 browser captures with **Google Gemini synthetic narration** and fictional records. It includes a condition change that invalidates an existing approval and hold before the wrong-item and correct-item packing checks. The release includes the original source media and the final master; the local file is `artifacts/closetrelay-demo-4k.mp4`. The manifest identifies the current cut and its exact duration/hash.
 
-![The appointment studio with its refined typography and explicitly fictional records](design/typography/evidence/run-03/initial-1440.png)
+![The custom appointment rack and packing sheet, with the verified fictional YouCam sample available](artifacts/live-youcam/public-layout.png)
 
 The shared rack and appointment sheet keep the garment's ID, location, recorded condition and current decision together. Search, a phone layout, keyboard focus, inline packing errors and a separate optional preview area support that workflow. [Design research and browser evidence](design/DESIGN_REVIEW.md). The latest [typography refinement](design/typography/README.md) uses one self-hosted Source Sans 3 family and 16px reading text; the existing video predates that font change.
 

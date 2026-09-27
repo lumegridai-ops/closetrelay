@@ -1,6 +1,6 @@
 # QA evidence — September 26, 2026
 
-The verified result is a local, single-operator application with a custom appointment-studio interface and an offline-tested YouCam adapter. **Live YouCam is not connected in the demonstration, and successful inference remains unverified.** No customer study, competitor advantage, remote multi-user security or winning outcome is established. The current UI research, decisions and detailed evidence are in the [design review](../design/DESIGN_REVIEW.md).
+The verified result is a local, single-operator application with a custom appointment-studio interface and an offline-tested YouCam adapter. **The hosted fixed-fictional-image YouCam path now has a verified live result; the local arbitrary-image adapter remains separately offline-tested.** No customer study, competitor advantage, remote multi-user security or winning outcome is established. The current UI research, decisions and detailed evidence are in the [design review](../design/DESIGN_REVIEW.md).
 
 ## Executed checks
 
@@ -44,3 +44,9 @@ The redesign keeps the wrong-item error beside the scan field and preserves the 
 - Contest submission and significant updates within the September 29 onward submission period. This dated precursor alone does not satisfy that later-work condition.
 
 No real API key, real client photo, private workspace database, or invented provider result is included in the public source or demonstration.
+
+## September 27 custom layout and live-provider update
+
+The appointment rail, garment rack and packing sheet replace the earlier generic sidebar. Root and an independent agent exercised the complete condition-change/approval/hold/wrong-ID/exact-pack/reload story. Selecting a different garment after packing now says “Viewing another garment,” and Escape restores focus from the fitting dialog. First garment starts at 575px on 390px phone and 549px on 1280px laptop. Normal and doubled-text samples had no document overflow. Four automated accessibility scans found no reported violations; incomplete categories and untested assistive-technology behavior remain explicit in the dated portfolio audit.
+
+Fresh local Python suites: 53 provider/transport/scheduler + 17 application checks. Public clothing workflow: 8 hosted groups passed. New provider defenses: 21 real-SQLite/fake-provider cases and 9 native-workerd network cases. Actual live provider result: 6 desktop/phone browser groups, full JPEG decode and exact hash verification. These categories test different boundaries and do not establish fit accuracy, real-client value or contest acceptance. The earlier 4K narrated film depicts the earlier local version; it is not footage of this newly verified provider result. See [hosted try-on](HOSTED_TRY_ON.md).

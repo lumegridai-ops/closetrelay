@@ -14,7 +14,7 @@ The current local workspace lets one operator create appointment and garment rec
 
 The custom appointment-studio interface pairs a shared garment rack with the current appointment sheet. The exact ID, staff-recorded condition, version and next action stay visible together. It includes searchable inventory, a 390px phone layout, keyboard focus and an inline wrong-item error that preserves the attempted scan. [Design rationale and primary research](../design/DESIGN_REVIEW.md).
 
-The code includes optional YouCam Clothes V4 integration and explicit consent controls. A preview is bound to its source image, garment and current choice/consent revisions. Real live provider access and inference have not yet been verified; no synthetic image is presented as a provider response.
+The code includes optional YouCam Clothes V4 integration and explicit consent controls. A preview is bound to its source image, garment and current choice/consent revisions. The hosted fixed-fictional-image demonstration completed a genuine Clothes V4 request on September 27; its saved result is explicitly labeled. The local arbitrary-photo/consent path has not itself been verified against the live provider.
 
 ## How we built it
 
@@ -40,8 +40,8 @@ This prototype was created September 26, before the event's September 29 submiss
 
 ## Remaining submission requirements
 
-Successful real YouCam integration, significant eligible-period updates after the September 29 start, current requirements/declarations, a verified public demo-video link in the required format, and verified Devpost submission status. A local recorded demonstration is prepared; this does not establish video publication or submission. General authorization to submit is recorded separately; it does not supply unknown personal facts.
+Significant eligible-period updates after the September 29 start, current requirements/declarations, a verified public demo-video link in the required format, and verified Devpost submission status. A local recorded demonstration is prepared; this does not establish video publication or submission. General authorization to submit is recorded separately; it does not supply unknown personal facts.
 
 ## Hosted demonstration update
 
-[Public OpenAI Sites demo](https://closetrelay.dgkv.chatgpt.site): real Python workflow computation in the browser, private versioned SQLite snapshots in hosted storage, isolated fictional visitor workspaces and the refined Source Sans 3 UI. Eight public browser check groups passed with no uncaught errors. Photo uploads, key entry and YouCam remain disabled on this demo. This does not fulfill the live-provider or eligible-period requirements. See [hosting evidence](HOSTING.md).
+[Public OpenAI Sites demo](https://closetrelay.dgkv.chatgpt.site): real Python workflow computation in the browser, private versioned SQLite snapshots in hosted storage, isolated fictional visitor workspaces and the refined Source Sans 3 UI. Eight public browser check groups passed with no uncaught errors. Personal photo uploads and key entry remain disabled. A separate fixed-fictional-image YouCam request has now succeeded, with saved-result reuse and actual provider evidence. The significant eligible-period work and complete final entry still remain. See [hosting evidence](HOSTING.md).

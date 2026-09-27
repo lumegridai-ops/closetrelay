@@ -33,28 +33,6 @@ export default {
   async fetch(request,env,ctx) {
     const url=new URL(request.url),origin=request.headers.get('origin');
     if(origin&&origin!==url.origin)return finish(error(403,'Use the same workspace page.'));
-    // Owner recovery is restricted to the exact pre-network failure diagnosed on Sep 27.
-    if(url.pathname==='/api/provider-preflight-recovery'){
-      if(request.method!=='POST'||!env.YOUCAM_SECRET_KEY||request.headers.get('X-Closet-Diagnostic')!==env.YOUCAM_SECRET_KEY)return finish(error(404,'Not found.'));
-      const failed=await env.DB.prepare('SELECT * FROM closet_sample_preview WHERE id=?').bind('navy-adult-v1').first();
-      if(failed?.created_at!==1790487260531||failed.status!=='creation_uncertain'||failed.task_id)return finish(error(409,'This is not the diagnosed preflight failure.'));
-      await env.FILES.put('youcam-sample/audit/2026-09-27-preflight-failure.json',JSON.stringify({failed,recovery_reason:'Cloudflare rejected redirect:error before any outbound fetch; nonbilling probe reproduced the TypeError and provider credit/history stayed unchanged.',recovered_at:Date.now()}),{httpMetadata:{contentType:'application/json'}});
-      const recovered=await env.DB.prepare('DELETE FROM closet_sample_preview WHERE id=? AND created_at=? AND status=? AND task_id IS NULL').bind('navy-adult-v1',1790487260531,'creation_uncertain').run();
-      return finish(Response.json({recovered:recovered.meta.changes===1,audit_retained:true}));
-    }
-    // Temporary owner-only, non-generating probe while diagnosing first live access.
-    if(url.pathname==='/api/provider-diagnostic'){
-      if(request.method!=='GET'||!env.YOUCAM_SECRET_KEY||request.headers.get('X-Closet-Diagnostic')!==env.YOUCAM_SECRET_KEY)return finish(error(404,'Not found.'));
-      const rows=[];
-      for(const path of ['/s2s/v1.0/client/credit','/s2s/v2.0/task/cloth-v4']){
-        try{
-          const method=path.endsWith('credit')?'GET':'POST';
-          const response=await fetch('https://yce-api-01.makeupar.com'+path,{method,headers:{Authorization:'Bearer '+env.YOUCAM_API_KEY,'Content-Type':'application/json'},...(method==='POST'?{body:'{}'}:{}),redirect:'manual',signal:AbortSignal.timeout(25000)});
-          rows.push({path,http:response.status,type:response.headers.get('content-type'),body:(await response.text()).slice(0,1600)});
-        }catch(e){rows.push({path,error:e.name,message:String(e.message).replaceAll(env.YOUCAM_API_KEY,'[redacted]').replaceAll(env.YOUCAM_SECRET_KEY,'[redacted]')});}
-      }
-      return finish(Response.json({rows}));
-    }
     if(url.pathname==='/health')return finish(Response.json({product:'ClosetRelay',hosting:'OpenAI Sites',mode:'isolated fictional demo',provider:!!env.YOUCAM_API_KEY,provider_scope:'fixed fictional adult and navy blazer'}));
     if(['/api/sample-preview','/api/sample-preview/image'].includes(url.pathname)){
       try{return finish(await samplePreview(request,env,ctx));}
